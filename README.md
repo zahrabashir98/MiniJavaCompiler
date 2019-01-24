@@ -1,2 +1,2 @@
 # MiniJavaCompiler
-Designingcompiler for MiniJava language by python3 using antlr4
+Designing compiler for MiniJava language by python3 using antlr4
