@@ -234,3 +234,4 @@ externalDeclaration : functionDefinition | declaration | ';';
 functionDefinition : declarationSpecifiers? declarator declarationList? compoundStatement;
 
 declarationList : declaration | declarationList declaration;
+

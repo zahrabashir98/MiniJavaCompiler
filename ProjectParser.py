@@ -1,12 +1,14 @@
-# Generated from Project.g4 by ANTLR 4.5.3
+# Generated from Project.g4 by ANTLR 4.7.2
 # encoding: utf-8
 from __future__ import print_function
 from antlr4 import *
 from io import StringIO
+import sys
+
 
 def serializedATN():
     with StringIO() as buf:
-        buf.write(u"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3")
+        buf.write(u"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3")
         buf.write(u"M\u0334\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t")
         buf.write(u"\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4\f\t\f\4\r\t\r")
         buf.write(u"\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22\4")
@@ -85,7 +87,7 @@ def serializedATN():
         buf.write(u"\16\20\22\24\26\30\34(\60\66<FLPVZ^hv|@\2\4\6\b\n\f\16")
         buf.write(u"\20\22\24\26\30\32\34\36 \"$&(*,.\60\62\64\668:<>@BD")
         buf.write(u"FHJLNPRTVXZ\\^`bdfhjlnprtvxz|\2\5\4\2\66\67::\4\2\t\16")
-        buf.write(u"!!\3\2#$\u036f\2\u0089\3\2\2\2\4\u009c\3\2\2\2\6\u00b1")
+        buf.write(u"!!\3\2#$\2\u036f\2\u0089\3\2\2\2\4\u009c\3\2\2\2\6\u00b1")
         buf.write(u"\3\2\2\2\b\u00c0\3\2\2\2\n\u00c2\3\2\2\2\f\u00ca\3\2")
         buf.write(u"\2\2\16\u00cc\3\2\2\2\20\u00dd\3\2\2\2\22\u00eb\3\2\2")
         buf.write(u"\2\24\u00ff\3\2\2\2\26\u010d\3\2\2\2\30\u0118\3\2\2\2")
@@ -616,11 +618,12 @@ class ProjectParser ( Parser ):
     LineComment=74
     Str=75
 
-    def __init__(self, input):
-        super(ProjectParser, self).__init__(input)
-        self.checkVersion("4.5.3")
+    def __init__(self, input, output=sys.stdout):
+        super(ProjectParser, self).__init__(input, output=output)
+        self.checkVersion("4.7.2")
         self._interp = ParserATNSimulator(self, self.atn, self.decisionsToDFA, self.sharedContextCache)
         self._predicates = None
+
 
 
 
@@ -642,9 +645,15 @@ class ProjectParser ( Parser ):
             else:
                 return self.getToken(ProjectParser.StrLiteral, i)
 
+        def Lparen(self):
+            return self.getToken(ProjectParser.Lparen, 0)
+
         def expr(self):
             return self.getTypedRuleContext(ProjectParser.ExprContext,0)
 
+
+        def Rparen(self):
+            return self.getToken(ProjectParser.Rparen, 0)
 
         def getRuleIndex(self):
             return ProjectParser.RULE_primaryExpr
@@ -666,17 +675,18 @@ class ProjectParser ( Parser ):
         self.enterRule(localctx, 0, self.RULE_primaryExpr)
         try:
             self.state = 135
+            self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [ProjectParser.ID]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 124
                 self.match(ProjectParser.ID)
-
+                pass
             elif token in [ProjectParser.Constant]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 125
                 self.match(ProjectParser.Constant)
-
+                pass
             elif token in [ProjectParser.StrLiteral]:
                 self.enterOuterAlt(localctx, 3)
                 self.state = 127 
@@ -693,7 +703,7 @@ class ProjectParser ( Parser ):
                     self._errHandler.sync(self)
                     _alt = self._interp.adaptivePredict(self._input,0,self._ctx)
 
-
+                pass
             elif token in [ProjectParser.Lparen]:
                 self.enterOuterAlt(localctx, 4)
                 self.state = 131
@@ -702,7 +712,7 @@ class ProjectParser ( Parser ):
                 self.expr(0)
                 self.state = 133
                 self.match(ProjectParser.Rparen)
-
+                pass
             else:
                 raise NoViableAltException(self)
 
@@ -714,6 +724,7 @@ class ProjectParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class PostfixExprContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
@@ -724,25 +735,49 @@ class ProjectParser ( Parser ):
             return self.getTypedRuleContext(ProjectParser.PrimaryExprContext,0)
 
 
+        def Lparen(self):
+            return self.getToken(ProjectParser.Lparen, 0)
+
         def typeName(self):
             return self.getTypedRuleContext(ProjectParser.TypeNameContext,0)
 
+
+        def Rparen(self):
+            return self.getToken(ProjectParser.Rparen, 0)
+
+        def Lbrace(self):
+            return self.getToken(ProjectParser.Lbrace, 0)
 
         def initializerList(self):
             return self.getTypedRuleContext(ProjectParser.InitializerListContext,0)
 
 
+        def Rbrace(self):
+            return self.getToken(ProjectParser.Rbrace, 0)
+
+        def Comma(self):
+            return self.getToken(ProjectParser.Comma, 0)
+
         def postfixExpr(self):
             return self.getTypedRuleContext(ProjectParser.PostfixExprContext,0)
 
+
+        def Lbrack(self):
+            return self.getToken(ProjectParser.Lbrack, 0)
 
         def expr(self):
             return self.getTypedRuleContext(ProjectParser.ExprContext,0)
 
 
+        def Rbrack(self):
+            return self.getToken(ProjectParser.Rbrack, 0)
+
         def argumentExprList(self):
             return self.getTypedRuleContext(ProjectParser.ArgumentExprListContext,0)
 
+
+        def Dot(self):
+            return self.getToken(ProjectParser.Dot, 0)
 
         def ID(self):
             return self.getToken(ProjectParser.ID, 0)
@@ -771,7 +806,7 @@ class ProjectParser ( Parser ):
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 154
-            self._errHandler.sync(self);
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,2,self._ctx)
             if la_ == 1:
                 self.state = 138
@@ -821,7 +856,7 @@ class ProjectParser ( Parser ):
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
                     self.state = 170
-                    self._errHandler.sync(self);
+                    self._errHandler.sync(self)
                     la_ = self._interp.adaptivePredict(self._input,4,self._ctx)
                     if la_ == 1:
                         localctx = ProjectParser.PostfixExprContext(self, _parentctx, _parentState)
@@ -848,6 +883,7 @@ class ProjectParser ( Parser ):
                         self.state = 162
                         self.match(ProjectParser.Lparen)
                         self.state = 164
+                        self._errHandler.sync(self)
                         _la = self._input.LA(1)
                         if ((((_la - 33)) & ~0x3f) == 0 and ((1 << (_la - 33)) & ((1 << (ProjectParser.Lparen - 33)) | (1 << (ProjectParser.Add - 33)) | (1 << (ProjectParser.Sub - 33)) | (1 << (ProjectParser.Not - 33)) | (1 << (ProjectParser.ID - 33)) | (1 << (ProjectParser.Constant - 33)) | (1 << (ProjectParser.StrLiteral - 33)))) != 0):
                             self.state = 163
@@ -884,6 +920,7 @@ class ProjectParser ( Parser ):
             self.unrollRecursionContexts(_parentctx)
         return localctx
 
+
     class ArgumentExprListContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
@@ -897,6 +934,9 @@ class ProjectParser ( Parser ):
         def argumentExprList(self):
             return self.getTypedRuleContext(ProjectParser.ArgumentExprListContext,0)
 
+
+        def Comma(self):
+            return self.getToken(ProjectParser.Comma, 0)
 
         def getRuleIndex(self):
             return ProjectParser.RULE_argumentExprList
@@ -953,6 +993,7 @@ class ProjectParser ( Parser ):
             self.unrollRecursionContexts(_parentctx)
         return localctx
 
+
     class UnaryExprContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
@@ -991,19 +1032,20 @@ class ProjectParser ( Parser ):
         self.enterRule(localctx, 6, self.RULE_unaryExpr)
         try:
             self.state = 190
+            self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [ProjectParser.Lparen, ProjectParser.ID, ProjectParser.Constant, ProjectParser.StrLiteral]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 186
                 self.postfixExpr(0)
-
+                pass
             elif token in [ProjectParser.Add, ProjectParser.Sub, ProjectParser.Not]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 187
                 self.unaryOperator()
                 self.state = 188
                 self.castExpr()
-
+                pass
             else:
                 raise NoViableAltException(self)
 
@@ -1015,12 +1057,21 @@ class ProjectParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class UnaryOperatorContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
             super(ProjectParser.UnaryOperatorContext, self).__init__(parent, invokingState)
             self.parser = parser
 
+        def Add(self):
+            return self.getToken(ProjectParser.Add, 0)
+
+        def Sub(self):
+            return self.getToken(ProjectParser.Sub, 0)
+
+        def Not(self):
+            return self.getToken(ProjectParser.Not, 0)
 
         def getRuleIndex(self):
             return ProjectParser.RULE_unaryOperator
@@ -1048,6 +1099,7 @@ class ProjectParser ( Parser ):
             if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ProjectParser.Add) | (1 << ProjectParser.Sub) | (1 << ProjectParser.Not))) != 0)):
                 self._errHandler.recoverInline(self)
             else:
+                self._errHandler.reportMatch(self)
                 self.consume()
         except RecognitionException as re:
             localctx.exception = re
@@ -1056,6 +1108,7 @@ class ProjectParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
+
 
     class CastExprContext(ParserRuleContext):
 
@@ -1067,9 +1120,15 @@ class ProjectParser ( Parser ):
             return self.getTypedRuleContext(ProjectParser.UnaryExprContext,0)
 
 
+        def Lparen(self):
+            return self.getToken(ProjectParser.Lparen, 0)
+
         def typeName(self):
             return self.getTypedRuleContext(ProjectParser.TypeNameContext,0)
 
+
+        def Rparen(self):
+            return self.getToken(ProjectParser.Rparen, 0)
 
         def castExpr(self):
             return self.getTypedRuleContext(ProjectParser.CastExprContext,0)
@@ -1095,7 +1154,7 @@ class ProjectParser ( Parser ):
         self.enterRule(localctx, 10, self.RULE_castExpr)
         try:
             self.state = 200
-            self._errHandler.sync(self);
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,8,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
@@ -1124,6 +1183,7 @@ class ProjectParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class MultiplicativeExprContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
@@ -1137,6 +1197,12 @@ class ProjectParser ( Parser ):
         def multiplicativeExpr(self):
             return self.getTypedRuleContext(ProjectParser.MultiplicativeExprContext,0)
 
+
+        def Mul(self):
+            return self.getToken(ProjectParser.Mul, 0)
+
+        def Div(self):
+            return self.getToken(ProjectParser.Div, 0)
 
         def getRuleIndex(self):
             return ProjectParser.RULE_multiplicativeExpr
@@ -1172,7 +1238,7 @@ class ProjectParser ( Parser ):
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
                     self.state = 214
-                    self._errHandler.sync(self);
+                    self._errHandler.sync(self)
                     la_ = self._interp.adaptivePredict(self._input,9,self._ctx)
                     if la_ == 1:
                         localctx = ProjectParser.MultiplicativeExprContext(self, _parentctx, _parentState)
@@ -1226,6 +1292,7 @@ class ProjectParser ( Parser ):
             self.unrollRecursionContexts(_parentctx)
         return localctx
 
+
     class AdditiveExprContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
@@ -1239,6 +1306,12 @@ class ProjectParser ( Parser ):
         def additiveExpr(self):
             return self.getTypedRuleContext(ProjectParser.AdditiveExprContext,0)
 
+
+        def Add(self):
+            return self.getToken(ProjectParser.Add, 0)
+
+        def Sub(self):
+            return self.getToken(ProjectParser.Sub, 0)
 
         def getRuleIndex(self):
             return ProjectParser.RULE_additiveExpr
@@ -1274,7 +1347,7 @@ class ProjectParser ( Parser ):
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
                     self.state = 228
-                    self._errHandler.sync(self);
+                    self._errHandler.sync(self)
                     la_ = self._interp.adaptivePredict(self._input,11,self._ctx)
                     if la_ == 1:
                         localctx = ProjectParser.AdditiveExprContext(self, _parentctx, _parentState)
@@ -1315,6 +1388,7 @@ class ProjectParser ( Parser ):
             self.unrollRecursionContexts(_parentctx)
         return localctx
 
+
     class RelationalExprContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
@@ -1328,6 +1402,18 @@ class ProjectParser ( Parser ):
         def relationalExpr(self):
             return self.getTypedRuleContext(ProjectParser.RelationalExprContext,0)
 
+
+        def Lt(self):
+            return self.getToken(ProjectParser.Lt, 0)
+
+        def Gt(self):
+            return self.getToken(ProjectParser.Gt, 0)
+
+        def Le(self):
+            return self.getToken(ProjectParser.Le, 0)
+
+        def Ge(self):
+            return self.getToken(ProjectParser.Ge, 0)
 
         def getRuleIndex(self):
             return ProjectParser.RULE_relationalExpr
@@ -1363,7 +1449,7 @@ class ProjectParser ( Parser ):
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
                     self.state = 248
-                    self._errHandler.sync(self);
+                    self._errHandler.sync(self)
                     la_ = self._interp.adaptivePredict(self._input,13,self._ctx)
                     if la_ == 1:
                         localctx = ProjectParser.RelationalExprContext(self, _parentctx, _parentState)
@@ -1430,6 +1516,7 @@ class ProjectParser ( Parser ):
             self.unrollRecursionContexts(_parentctx)
         return localctx
 
+
     class EqualityExprContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
@@ -1443,6 +1530,12 @@ class ProjectParser ( Parser ):
         def equalityExpr(self):
             return self.getTypedRuleContext(ProjectParser.EqualityExprContext,0)
 
+
+        def Equal(self):
+            return self.getToken(ProjectParser.Equal, 0)
+
+        def Not_Equal(self):
+            return self.getToken(ProjectParser.Not_Equal, 0)
 
         def getRuleIndex(self):
             return ProjectParser.RULE_equalityExpr
@@ -1478,7 +1571,7 @@ class ProjectParser ( Parser ):
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
                     self.state = 262
-                    self._errHandler.sync(self);
+                    self._errHandler.sync(self)
                     la_ = self._interp.adaptivePredict(self._input,15,self._ctx)
                     if la_ == 1:
                         localctx = ProjectParser.EqualityExprContext(self, _parentctx, _parentState)
@@ -1519,6 +1612,7 @@ class ProjectParser ( Parser ):
             self.unrollRecursionContexts(_parentctx)
         return localctx
 
+
     class LogicalAndExprContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
@@ -1532,6 +1626,9 @@ class ProjectParser ( Parser ):
         def logicalAndExpr(self):
             return self.getTypedRuleContext(ProjectParser.LogicalAndExprContext,0)
 
+
+        def AND(self):
+            return self.getToken(ProjectParser.AND, 0)
 
         def getRuleIndex(self):
             return ProjectParser.RULE_logicalAndExpr
@@ -1588,6 +1685,7 @@ class ProjectParser ( Parser ):
             self.unrollRecursionContexts(_parentctx)
         return localctx
 
+
     class LogicalOrExprContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
@@ -1601,6 +1699,9 @@ class ProjectParser ( Parser ):
         def logicalOrExpr(self):
             return self.getTypedRuleContext(ProjectParser.LogicalOrExprContext,0)
 
+
+        def OR(self):
+            return self.getToken(ProjectParser.OR, 0)
 
         def getRuleIndex(self):
             return ProjectParser.RULE_logicalOrExpr
@@ -1657,6 +1758,7 @@ class ProjectParser ( Parser ):
             self.unrollRecursionContexts(_parentctx)
         return localctx
 
+
     class AssignmentExprContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
@@ -1670,6 +1772,9 @@ class ProjectParser ( Parser ):
         def unaryExpr(self):
             return self.getTypedRuleContext(ProjectParser.UnaryExprContext,0)
 
+
+        def Assign(self):
+            return self.getToken(ProjectParser.Assign, 0)
 
         def assignmentExpr(self):
             return self.getTypedRuleContext(ProjectParser.AssignmentExprContext,0)
@@ -1695,7 +1800,7 @@ class ProjectParser ( Parser ):
         self.enterRule(localctx, 24, self.RULE_assignmentExpr)
         try:
             self.state = 294
-            self._errHandler.sync(self);
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,19,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
@@ -1722,6 +1827,7 @@ class ProjectParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class ExprContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
@@ -1735,6 +1841,9 @@ class ProjectParser ( Parser ):
         def expr(self):
             return self.getTypedRuleContext(ProjectParser.ExprContext,0)
 
+
+        def Comma(self):
+            return self.getToken(ProjectParser.Comma, 0)
 
         def getRuleIndex(self):
             return ProjectParser.RULE_expr
@@ -1791,6 +1900,7 @@ class ProjectParser ( Parser ):
             self.unrollRecursionContexts(_parentctx)
         return localctx
 
+
     class ConstantExprContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
@@ -1831,6 +1941,7 @@ class ProjectParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class DeclarationContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
@@ -1844,6 +1955,9 @@ class ProjectParser ( Parser ):
         def initDeclaratorList(self):
             return self.getTypedRuleContext(ProjectParser.InitDeclaratorListContext,0)
 
+
+        def Semi(self):
+            return self.getToken(ProjectParser.Semi, 0)
 
         def getRuleIndex(self):
             return ProjectParser.RULE_declaration
@@ -1865,7 +1979,7 @@ class ProjectParser ( Parser ):
         self.enterRule(localctx, 30, self.RULE_declaration)
         try:
             self.state = 316
-            self._errHandler.sync(self);
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,21,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
@@ -1893,6 +2007,7 @@ class ProjectParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
+
 
     class DeclarationSpecifiersContext(ParserRuleContext):
 
@@ -1947,6 +2062,7 @@ class ProjectParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
+
 
     class DeclarationSpecifiers2Context(ParserRuleContext):
 
@@ -2003,6 +2119,7 @@ class ProjectParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class DeclarationSpecifierContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
@@ -2037,17 +2154,18 @@ class ProjectParser ( Parser ):
         self.enterRule(localctx, 36, self.RULE_declarationSpecifier)
         try:
             self.state = 330
+            self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [ProjectParser.Float, ProjectParser.Double, ProjectParser.Int, ProjectParser.Long, ProjectParser.Short, ProjectParser.Char, ProjectParser.Class_, ProjectParser.Enum, ProjectParser.Void]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 328
                 self.typeSpecifier()
-
+                pass
             elif token in [ProjectParser.Const]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 329
                 self.typeQualifier()
-
+                pass
             else:
                 raise NoViableAltException(self)
 
@@ -2058,6 +2176,7 @@ class ProjectParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
+
 
     class InitDeclaratorListContext(ParserRuleContext):
 
@@ -2072,6 +2191,9 @@ class ProjectParser ( Parser ):
         def initDeclaratorList(self):
             return self.getTypedRuleContext(ProjectParser.InitDeclaratorListContext,0)
 
+
+        def Comma(self):
+            return self.getToken(ProjectParser.Comma, 0)
 
         def getRuleIndex(self):
             return ProjectParser.RULE_initDeclaratorList
@@ -2128,6 +2250,7 @@ class ProjectParser ( Parser ):
             self.unrollRecursionContexts(_parentctx)
         return localctx
 
+
     class InitDeclaratorContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
@@ -2137,6 +2260,9 @@ class ProjectParser ( Parser ):
         def declarator(self):
             return self.getTypedRuleContext(ProjectParser.DeclaratorContext,0)
 
+
+        def Assign(self):
+            return self.getToken(ProjectParser.Assign, 0)
 
         def initializer(self):
             return self.getTypedRuleContext(ProjectParser.InitializerContext,0)
@@ -2162,7 +2288,7 @@ class ProjectParser ( Parser ):
         self.enterRule(localctx, 40, self.RULE_initDeclarator)
         try:
             self.state = 348
-            self._errHandler.sync(self);
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,26,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
@@ -2189,11 +2315,33 @@ class ProjectParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class TypeSpecifierContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
             super(ProjectParser.TypeSpecifierContext, self).__init__(parent, invokingState)
             self.parser = parser
+
+        def Void(self):
+            return self.getToken(ProjectParser.Void, 0)
+
+        def Char(self):
+            return self.getToken(ProjectParser.Char, 0)
+
+        def Short(self):
+            return self.getToken(ProjectParser.Short, 0)
+
+        def Int(self):
+            return self.getToken(ProjectParser.Int, 0)
+
+        def Long(self):
+            return self.getToken(ProjectParser.Long, 0)
+
+        def Float(self):
+            return self.getToken(ProjectParser.Float, 0)
+
+        def Double(self):
+            return self.getToken(ProjectParser.Double, 0)
 
         def classSpecifier(self):
             return self.getTypedRuleContext(ProjectParser.ClassSpecifierContext,0)
@@ -2224,6 +2372,7 @@ class ProjectParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.state = 353
+            self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [ProjectParser.Float, ProjectParser.Double, ProjectParser.Int, ProjectParser.Long, ProjectParser.Short, ProjectParser.Char, ProjectParser.Void]:
                 self.enterOuterAlt(localctx, 1)
@@ -2232,18 +2381,19 @@ class ProjectParser ( Parser ):
                 if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ProjectParser.Float) | (1 << ProjectParser.Double) | (1 << ProjectParser.Int) | (1 << ProjectParser.Long) | (1 << ProjectParser.Short) | (1 << ProjectParser.Char) | (1 << ProjectParser.Void))) != 0)):
                     self._errHandler.recoverInline(self)
                 else:
+                    self._errHandler.reportMatch(self)
                     self.consume()
-
+                pass
             elif token in [ProjectParser.Class_]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 351
                 self.classSpecifier()
-
+                pass
             elif token in [ProjectParser.Enum]:
                 self.enterOuterAlt(localctx, 3)
                 self.state = 352
                 self.enumSpecifier()
-
+                pass
             else:
                 raise NoViableAltException(self)
 
@@ -2255,6 +2405,7 @@ class ProjectParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class ClassSpecifierContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
@@ -2264,9 +2415,15 @@ class ProjectParser ( Parser ):
         def Class_(self):
             return self.getToken(ProjectParser.Class_, 0)
 
+        def Lbrace(self):
+            return self.getToken(ProjectParser.Lbrace, 0)
+
         def classDeclarationList(self):
             return self.getTypedRuleContext(ProjectParser.ClassDeclarationListContext,0)
 
+
+        def Rbrace(self):
+            return self.getToken(ProjectParser.Rbrace, 0)
 
         def ID(self):
             return self.getToken(ProjectParser.ID, 0)
@@ -2292,13 +2449,14 @@ class ProjectParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.state = 365
-            self._errHandler.sync(self);
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,29,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 355
                 self.match(ProjectParser.Class_)
                 self.state = 357
+                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==ProjectParser.ID:
                     self.state = 356
@@ -2329,6 +2487,7 @@ class ProjectParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
+
 
     class ClassDeclarationListContext(ParserRuleContext):
 
@@ -2397,6 +2556,7 @@ class ProjectParser ( Parser ):
             self.unrollRecursionContexts(_parentctx)
         return localctx
 
+
     class ClassDeclarationContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
@@ -2406,6 +2566,9 @@ class ProjectParser ( Parser ):
         def specifierQualifierList(self):
             return self.getTypedRuleContext(ProjectParser.SpecifierQualifierListContext,0)
 
+
+        def Semi(self):
+            return self.getToken(ProjectParser.Semi, 0)
 
         def classDeclaratorList(self):
             return self.getTypedRuleContext(ProjectParser.ClassDeclaratorListContext,0)
@@ -2435,6 +2598,7 @@ class ProjectParser ( Parser ):
             self.state = 377
             self.specifierQualifierList()
             self.state = 379
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ProjectParser.Lparen) | (1 << ProjectParser.Colon) | (1 << ProjectParser.ID))) != 0):
                 self.state = 378
@@ -2450,6 +2614,7 @@ class ProjectParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
+
 
     class SpecifierQualifierListContext(ParserRuleContext):
 
@@ -2490,31 +2655,34 @@ class ProjectParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.state = 391
+            self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [ProjectParser.Float, ProjectParser.Double, ProjectParser.Int, ProjectParser.Long, ProjectParser.Short, ProjectParser.Char, ProjectParser.Class_, ProjectParser.Enum, ProjectParser.Void]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 383
                 self.typeSpecifier()
                 self.state = 385
+                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ProjectParser.Float) | (1 << ProjectParser.Double) | (1 << ProjectParser.Int) | (1 << ProjectParser.Long) | (1 << ProjectParser.Short) | (1 << ProjectParser.Char) | (1 << ProjectParser.Class_) | (1 << ProjectParser.Const) | (1 << ProjectParser.Enum) | (1 << ProjectParser.Void))) != 0):
                     self.state = 384
                     self.specifierQualifierList()
 
 
-
+                pass
             elif token in [ProjectParser.Const]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 387
                 self.typeQualifier()
                 self.state = 389
+                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ProjectParser.Float) | (1 << ProjectParser.Double) | (1 << ProjectParser.Int) | (1 << ProjectParser.Long) | (1 << ProjectParser.Short) | (1 << ProjectParser.Char) | (1 << ProjectParser.Class_) | (1 << ProjectParser.Const) | (1 << ProjectParser.Enum) | (1 << ProjectParser.Void))) != 0):
                     self.state = 388
                     self.specifierQualifierList()
 
 
-
+                pass
             else:
                 raise NoViableAltException(self)
 
@@ -2525,6 +2693,7 @@ class ProjectParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
+
 
     class ClassDeclaratorListContext(ParserRuleContext):
 
@@ -2539,6 +2708,9 @@ class ProjectParser ( Parser ):
         def classDeclaratorList(self):
             return self.getTypedRuleContext(ProjectParser.ClassDeclaratorListContext,0)
 
+
+        def Comma(self):
+            return self.getToken(ProjectParser.Comma, 0)
 
         def getRuleIndex(self):
             return ProjectParser.RULE_classDeclaratorList
@@ -2595,6 +2767,7 @@ class ProjectParser ( Parser ):
             self.unrollRecursionContexts(_parentctx)
         return localctx
 
+
     class ClassDeclaratorContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
@@ -2604,6 +2777,9 @@ class ProjectParser ( Parser ):
         def declarator(self):
             return self.getTypedRuleContext(ProjectParser.DeclaratorContext,0)
 
+
+        def Colon(self):
+            return self.getToken(ProjectParser.Colon, 0)
 
         def constantExpr(self):
             return self.getTypedRuleContext(ProjectParser.ConstantExprContext,0)
@@ -2630,7 +2806,7 @@ class ProjectParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.state = 410
-            self._errHandler.sync(self);
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,37,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
@@ -2641,6 +2817,7 @@ class ProjectParser ( Parser ):
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 406
+                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==ProjectParser.Lparen or _la==ProjectParser.ID:
                     self.state = 405
@@ -2662,18 +2839,31 @@ class ProjectParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class EnumSpecifierContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
             super(ProjectParser.EnumSpecifierContext, self).__init__(parent, invokingState)
             self.parser = parser
 
+        def Enum(self):
+            return self.getToken(ProjectParser.Enum, 0)
+
+        def Lbrace(self):
+            return self.getToken(ProjectParser.Lbrace, 0)
+
         def enumeratorList(self):
             return self.getTypedRuleContext(ProjectParser.EnumeratorListContext,0)
 
 
+        def Rbrace(self):
+            return self.getToken(ProjectParser.Rbrace, 0)
+
         def ID(self):
             return self.getToken(ProjectParser.ID, 0)
+
+        def Comma(self):
+            return self.getToken(ProjectParser.Comma, 0)
 
         def getRuleIndex(self):
             return ProjectParser.RULE_enumSpecifier
@@ -2696,13 +2886,14 @@ class ProjectParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.state = 431
-            self._errHandler.sync(self);
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,40,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 412
                 self.match(ProjectParser.Enum)
                 self.state = 414
+                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==ProjectParser.ID:
                     self.state = 413
@@ -2722,6 +2913,7 @@ class ProjectParser ( Parser ):
                 self.state = 420
                 self.match(ProjectParser.Enum)
                 self.state = 422
+                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==ProjectParser.ID:
                     self.state = 421
@@ -2755,6 +2947,7 @@ class ProjectParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class EnumeratorListContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
@@ -2768,6 +2961,9 @@ class ProjectParser ( Parser ):
         def enumeratorList(self):
             return self.getTypedRuleContext(ProjectParser.EnumeratorListContext,0)
 
+
+        def Comma(self):
+            return self.getToken(ProjectParser.Comma, 0)
 
         def getRuleIndex(self):
             return ProjectParser.RULE_enumeratorList
@@ -2824,6 +3020,7 @@ class ProjectParser ( Parser ):
             self.unrollRecursionContexts(_parentctx)
         return localctx
 
+
     class EnumeratorContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
@@ -2833,6 +3030,9 @@ class ProjectParser ( Parser ):
         def enumerationConstant(self):
             return self.getTypedRuleContext(ProjectParser.EnumerationConstantContext,0)
 
+
+        def Assign(self):
+            return self.getToken(ProjectParser.Assign, 0)
 
         def constantExpr(self):
             return self.getTypedRuleContext(ProjectParser.ConstantExprContext,0)
@@ -2858,7 +3058,7 @@ class ProjectParser ( Parser ):
         self.enterRule(localctx, 60, self.RULE_enumerator)
         try:
             self.state = 449
-            self._errHandler.sync(self);
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,42,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
@@ -2884,6 +3084,7 @@ class ProjectParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
+
 
     class EnumerationConstantContext(ParserRuleContext):
 
@@ -2924,12 +3125,15 @@ class ProjectParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class TypeQualifierContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
             super(ProjectParser.TypeQualifierContext, self).__init__(parent, invokingState)
             self.parser = parser
 
+        def Const(self):
+            return self.getToken(ProjectParser.Const, 0)
 
         def getRuleIndex(self):
             return ProjectParser.RULE_typeQualifier
@@ -2960,6 +3164,7 @@ class ProjectParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
+
 
     class DeclaratorContext(ParserRuleContext):
 
@@ -3001,6 +3206,7 @@ class ProjectParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class DirectDeclaratorContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
@@ -3010,13 +3216,25 @@ class ProjectParser ( Parser ):
         def ID(self):
             return self.getToken(ProjectParser.ID, 0)
 
+        def Lparen(self):
+            return self.getToken(ProjectParser.Lparen, 0)
+
         def declarator(self):
             return self.getTypedRuleContext(ProjectParser.DeclaratorContext,0)
 
 
+        def Rparen(self):
+            return self.getToken(ProjectParser.Rparen, 0)
+
         def directDeclarator(self):
             return self.getTypedRuleContext(ProjectParser.DirectDeclaratorContext,0)
 
+
+        def Lbrack(self):
+            return self.getToken(ProjectParser.Lbrack, 0)
+
+        def Rbrack(self):
+            return self.getToken(ProjectParser.Rbrack, 0)
 
         def typeQualifier(self):
             return self.getTypedRuleContext(ProjectParser.TypeQualifierContext,0)
@@ -3025,6 +3243,9 @@ class ProjectParser ( Parser ):
         def assignmentExpr(self):
             return self.getTypedRuleContext(ProjectParser.AssignmentExprContext,0)
 
+
+        def Mul(self):
+            return self.getToken(ProjectParser.Mul, 0)
 
         def parameterTypeList(self):
             return self.getTypedRuleContext(ProjectParser.ParameterTypeListContext,0)
@@ -3058,11 +3279,12 @@ class ProjectParser ( Parser ):
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 463
+            self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [ProjectParser.ID]:
                 self.state = 458
                 self.match(ProjectParser.ID)
-
+                pass
             elif token in [ProjectParser.Lparen]:
                 self.state = 459
                 self.match(ProjectParser.Lparen)
@@ -3070,7 +3292,7 @@ class ProjectParser ( Parser ):
                 self.declarator()
                 self.state = 461
                 self.match(ProjectParser.Rparen)
-
+                pass
             else:
                 raise NoViableAltException(self)
 
@@ -3084,7 +3306,7 @@ class ProjectParser ( Parser ):
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
                     self.state = 498
-                    self._errHandler.sync(self);
+                    self._errHandler.sync(self)
                     la_ = self._interp.adaptivePredict(self._input,48,self._ctx)
                     if la_ == 1:
                         localctx = ProjectParser.DirectDeclaratorContext(self, _parentctx, _parentState)
@@ -3096,6 +3318,7 @@ class ProjectParser ( Parser ):
                         self.state = 466
                         self.match(ProjectParser.Lbrack)
                         self.state = 468
+                        self._errHandler.sync(self)
                         _la = self._input.LA(1)
                         if _la==ProjectParser.Const:
                             self.state = 467
@@ -3103,6 +3326,7 @@ class ProjectParser ( Parser ):
 
 
                         self.state = 471
+                        self._errHandler.sync(self)
                         _la = self._input.LA(1)
                         if ((((_la - 33)) & ~0x3f) == 0 and ((1 << (_la - 33)) & ((1 << (ProjectParser.Lparen - 33)) | (1 << (ProjectParser.Add - 33)) | (1 << (ProjectParser.Sub - 33)) | (1 << (ProjectParser.Not - 33)) | (1 << (ProjectParser.ID - 33)) | (1 << (ProjectParser.Constant - 33)) | (1 << (ProjectParser.StrLiteral - 33)))) != 0):
                             self.state = 470
@@ -3140,6 +3364,7 @@ class ProjectParser ( Parser ):
                         self.state = 481
                         self.match(ProjectParser.Lbrack)
                         self.state = 483
+                        self._errHandler.sync(self)
                         _la = self._input.LA(1)
                         if _la==ProjectParser.Const:
                             self.state = 482
@@ -3177,6 +3402,7 @@ class ProjectParser ( Parser ):
                         self.state = 493
                         self.match(ProjectParser.Lparen)
                         self.state = 495
+                        self._errHandler.sync(self)
                         _la = self._input.LA(1)
                         if _la==ProjectParser.ID:
                             self.state = 494
@@ -3200,11 +3426,18 @@ class ProjectParser ( Parser ):
             self.unrollRecursionContexts(_parentctx)
         return localctx
 
+
     class NestedParenthesesBlockContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
             super(ProjectParser.NestedParenthesesBlockContext, self).__init__(parent, invokingState)
             self.parser = parser
+
+        def Lparen(self, i=None):
+            if i is None:
+                return self.getTokens(ProjectParser.Lparen)
+            else:
+                return self.getToken(ProjectParser.Lparen, i)
 
         def nestedParenthesesBlock(self, i=None):
             if i is None:
@@ -3212,6 +3445,12 @@ class ProjectParser ( Parser ):
             else:
                 return self.getTypedRuleContext(ProjectParser.NestedParenthesesBlockContext,i)
 
+
+        def Rparen(self, i=None):
+            if i is None:
+                return self.getTokens(ProjectParser.Rparen)
+            else:
+                return self.getToken(ProjectParser.Rparen, i)
 
         def getRuleIndex(self):
             return ProjectParser.RULE_nestedParenthesesBlock
@@ -3239,6 +3478,7 @@ class ProjectParser ( Parser ):
             _la = self._input.LA(1)
             while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ProjectParser.T__0) | (1 << ProjectParser.AND) | (1 << ProjectParser.OR) | (1 << ProjectParser.Bool) | (1 << ProjectParser.Break) | (1 << ProjectParser.String) | (1 << ProjectParser.Float) | (1 << ProjectParser.Double) | (1 << ProjectParser.Int) | (1 << ProjectParser.Long) | (1 << ProjectParser.Short) | (1 << ProjectParser.Char) | (1 << ProjectParser.Return) | (1 << ProjectParser.While) | (1 << ProjectParser.Private) | (1 << ProjectParser.Public) | (1 << ProjectParser.If) | (1 << ProjectParser.Class_) | (1 << ProjectParser.False_) | (1 << ProjectParser.True_) | (1 << ProjectParser.Do) | (1 << ProjectParser.Else) | (1 << ProjectParser.Alias) | (1 << ProjectParser.Switch) | (1 << ProjectParser.Case) | (1 << ProjectParser.Const) | (1 << ProjectParser.Continue) | (1 << ProjectParser.Enum) | (1 << ProjectParser.For) | (1 << ProjectParser.NullLiteral) | (1 << ProjectParser.Void) | (1 << ProjectParser.Default) | (1 << ProjectParser.Lparen) | (1 << ProjectParser.Lbrace) | (1 << ProjectParser.Rbrace) | (1 << ProjectParser.Lbrack) | (1 << ProjectParser.Rbrack) | (1 << ProjectParser.Semi) | (1 << ProjectParser.Comma) | (1 << ProjectParser.Dot) | (1 << ProjectParser.Colon) | (1 << ProjectParser.Assign) | (1 << ProjectParser.Gt) | (1 << ProjectParser.Lt) | (1 << ProjectParser.Equal) | (1 << ProjectParser.Le) | (1 << ProjectParser.Ge) | (1 << ProjectParser.Not_Equal) | (1 << ProjectParser.Inc) | (1 << ProjectParser.Dec) | (1 << ProjectParser.Add) | (1 << ProjectParser.Sub) | (1 << ProjectParser.Mul) | (1 << ProjectParser.Div) | (1 << ProjectParser.Not) | (1 << ProjectParser.Letter) | (1 << ProjectParser.Digit) | (1 << ProjectParser.ID) | (1 << ProjectParser.NonZeroDigit) | (1 << ProjectParser.Zero) | (1 << ProjectParser.IntegerConst) | (1 << ProjectParser.DigitSeq))) != 0) or ((((_la - 64)) & ~0x3f) == 0 and ((1 << (_la - 64)) & ((1 << (ProjectParser.FloatConst - 64)) | (1 << (ProjectParser.CharConst - 64)) | (1 << (ProjectParser.CChar - 64)) | (1 << (ProjectParser.EscSeq - 64)) | (1 << (ProjectParser.Constant - 64)) | (1 << (ProjectParser.StrLiteral - 64)) | (1 << (ProjectParser.SChar - 64)) | (1 << (ProjectParser.Whitespace - 64)) | (1 << (ProjectParser.Newline - 64)) | (1 << (ProjectParser.BlockComment - 64)) | (1 << (ProjectParser.LineComment - 64)) | (1 << (ProjectParser.Str - 64)))) != 0):
                 self.state = 508
+                self._errHandler.sync(self)
                 token = self._input.LA(1)
                 if token in [ProjectParser.T__0, ProjectParser.AND, ProjectParser.OR, ProjectParser.Bool, ProjectParser.Break, ProjectParser.String, ProjectParser.Float, ProjectParser.Double, ProjectParser.Int, ProjectParser.Long, ProjectParser.Short, ProjectParser.Char, ProjectParser.Return, ProjectParser.While, ProjectParser.Private, ProjectParser.Public, ProjectParser.If, ProjectParser.Class_, ProjectParser.False_, ProjectParser.True_, ProjectParser.Do, ProjectParser.Else, ProjectParser.Alias, ProjectParser.Switch, ProjectParser.Case, ProjectParser.Const, ProjectParser.Continue, ProjectParser.Enum, ProjectParser.For, ProjectParser.NullLiteral, ProjectParser.Void, ProjectParser.Default, ProjectParser.Lbrace, ProjectParser.Rbrace, ProjectParser.Lbrack, ProjectParser.Rbrack, ProjectParser.Semi, ProjectParser.Comma, ProjectParser.Dot, ProjectParser.Colon, ProjectParser.Assign, ProjectParser.Gt, ProjectParser.Lt, ProjectParser.Equal, ProjectParser.Le, ProjectParser.Ge, ProjectParser.Not_Equal, ProjectParser.Inc, ProjectParser.Dec, ProjectParser.Add, ProjectParser.Sub, ProjectParser.Mul, ProjectParser.Div, ProjectParser.Not, ProjectParser.Letter, ProjectParser.Digit, ProjectParser.ID, ProjectParser.NonZeroDigit, ProjectParser.Zero, ProjectParser.IntegerConst, ProjectParser.DigitSeq, ProjectParser.FloatConst, ProjectParser.CharConst, ProjectParser.CChar, ProjectParser.EscSeq, ProjectParser.Constant, ProjectParser.StrLiteral, ProjectParser.SChar, ProjectParser.Whitespace, ProjectParser.Newline, ProjectParser.BlockComment, ProjectParser.LineComment, ProjectParser.Str]:
                     self.state = 503
@@ -3246,8 +3486,9 @@ class ProjectParser ( Parser ):
                     if _la <= 0 or _la==ProjectParser.Lparen or _la==ProjectParser.Rparen:
                         self._errHandler.recoverInline(self)
                     else:
+                        self._errHandler.reportMatch(self)
                         self.consume()
-
+                    pass
                 elif token in [ProjectParser.Lparen]:
                     self.state = 504
                     self.match(ProjectParser.Lparen)
@@ -3255,7 +3496,7 @@ class ProjectParser ( Parser ):
                     self.nestedParenthesesBlock()
                     self.state = 506
                     self.match(ProjectParser.Rparen)
-
+                    pass
                 else:
                     raise NoViableAltException(self)
 
@@ -3270,6 +3511,7 @@ class ProjectParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
+
 
     class ParameterTypeListContext(ParserRuleContext):
 
@@ -3311,6 +3553,7 @@ class ProjectParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class ParameterListContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
@@ -3324,6 +3567,9 @@ class ProjectParser ( Parser ):
         def parameterList(self):
             return self.getTypedRuleContext(ProjectParser.ParameterListContext,0)
 
+
+        def Comma(self):
+            return self.getToken(ProjectParser.Comma, 0)
 
         def getRuleIndex(self):
             return ProjectParser.RULE_parameterList
@@ -3380,6 +3626,7 @@ class ProjectParser ( Parser ):
             self.unrollRecursionContexts(_parentctx)
         return localctx
 
+
     class ParameterDeclarationContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
@@ -3422,7 +3669,7 @@ class ProjectParser ( Parser ):
         self.enterRule(localctx, 76, self.RULE_parameterDeclaration)
         try:
             self.state = 533
-            self._errHandler.sync(self);
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,54,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
@@ -3437,7 +3684,7 @@ class ProjectParser ( Parser ):
                 self.state = 529
                 self.declarationSpecifiers2()
                 self.state = 531
-                self._errHandler.sync(self);
+                self._errHandler.sync(self)
                 la_ = self._interp.adaptivePredict(self._input,53,self._ctx)
                 if la_ == 1:
                     self.state = 530
@@ -3455,6 +3702,7 @@ class ProjectParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class IdentifierListContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
@@ -3467,6 +3715,9 @@ class ProjectParser ( Parser ):
         def identifierList(self):
             return self.getTypedRuleContext(ProjectParser.IdentifierListContext,0)
 
+
+        def Comma(self):
+            return self.getToken(ProjectParser.Comma, 0)
 
         def getRuleIndex(self):
             return ProjectParser.RULE_identifierList
@@ -3523,6 +3774,7 @@ class ProjectParser ( Parser ):
             self.unrollRecursionContexts(_parentctx)
         return localctx
 
+
     class TypeNameContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
@@ -3561,6 +3813,7 @@ class ProjectParser ( Parser ):
             self.state = 546
             self.specifierQualifierList()
             self.state = 548
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==ProjectParser.Lparen or _la==ProjectParser.Lbrack:
                 self.state = 547
@@ -3574,6 +3827,7 @@ class ProjectParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
+
 
     class AbstractDeclaratorContext(ParserRuleContext):
 
@@ -3615,15 +3869,28 @@ class ProjectParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class DirectAbstractDeclaratorContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
             super(ProjectParser.DirectAbstractDeclaratorContext, self).__init__(parent, invokingState)
             self.parser = parser
 
+        def Lparen(self):
+            return self.getToken(ProjectParser.Lparen, 0)
+
         def abstractDeclarator(self):
             return self.getTypedRuleContext(ProjectParser.AbstractDeclaratorContext,0)
 
+
+        def Rparen(self):
+            return self.getToken(ProjectParser.Rparen, 0)
+
+        def Lbrack(self):
+            return self.getToken(ProjectParser.Lbrack, 0)
+
+        def Rbrack(self):
+            return self.getToken(ProjectParser.Rbrack, 0)
 
         def typeQualifier(self):
             return self.getTypedRuleContext(ProjectParser.TypeQualifierContext,0)
@@ -3665,7 +3932,7 @@ class ProjectParser ( Parser ):
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 582
-            self._errHandler.sync(self);
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,61,self._ctx)
             if la_ == 1:
                 self.state = 553
@@ -3680,6 +3947,7 @@ class ProjectParser ( Parser ):
                 self.state = 557
                 self.match(ProjectParser.Lbrack)
                 self.state = 559
+                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==ProjectParser.Const:
                     self.state = 558
@@ -3687,6 +3955,7 @@ class ProjectParser ( Parser ):
 
 
                 self.state = 562
+                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if ((((_la - 33)) & ~0x3f) == 0 and ((1 << (_la - 33)) & ((1 << (ProjectParser.Lparen - 33)) | (1 << (ProjectParser.Add - 33)) | (1 << (ProjectParser.Sub - 33)) | (1 << (ProjectParser.Not - 33)) | (1 << (ProjectParser.ID - 33)) | (1 << (ProjectParser.Constant - 33)) | (1 << (ProjectParser.StrLiteral - 33)))) != 0):
                     self.state = 561
@@ -3701,6 +3970,7 @@ class ProjectParser ( Parser ):
                 self.state = 565
                 self.match(ProjectParser.Lbrack)
                 self.state = 567
+                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==ProjectParser.Const:
                     self.state = 566
@@ -3728,6 +3998,7 @@ class ProjectParser ( Parser ):
                 self.state = 577
                 self.match(ProjectParser.Lparen)
                 self.state = 579
+                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ProjectParser.Float) | (1 << ProjectParser.Double) | (1 << ProjectParser.Int) | (1 << ProjectParser.Long) | (1 << ProjectParser.Short) | (1 << ProjectParser.Char) | (1 << ProjectParser.Class_) | (1 << ProjectParser.Const) | (1 << ProjectParser.Enum) | (1 << ProjectParser.Void))) != 0):
                     self.state = 578
@@ -3749,7 +4020,7 @@ class ProjectParser ( Parser ):
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
                     self.state = 613
-                    self._errHandler.sync(self);
+                    self._errHandler.sync(self)
                     la_ = self._interp.adaptivePredict(self._input,66,self._ctx)
                     if la_ == 1:
                         localctx = ProjectParser.DirectAbstractDeclaratorContext(self, _parentctx, _parentState)
@@ -3761,6 +4032,7 @@ class ProjectParser ( Parser ):
                         self.state = 585
                         self.match(ProjectParser.Lbrack)
                         self.state = 587
+                        self._errHandler.sync(self)
                         _la = self._input.LA(1)
                         if _la==ProjectParser.Const:
                             self.state = 586
@@ -3768,6 +4040,7 @@ class ProjectParser ( Parser ):
 
 
                         self.state = 590
+                        self._errHandler.sync(self)
                         _la = self._input.LA(1)
                         if ((((_la - 33)) & ~0x3f) == 0 and ((1 << (_la - 33)) & ((1 << (ProjectParser.Lparen - 33)) | (1 << (ProjectParser.Add - 33)) | (1 << (ProjectParser.Sub - 33)) | (1 << (ProjectParser.Not - 33)) | (1 << (ProjectParser.ID - 33)) | (1 << (ProjectParser.Constant - 33)) | (1 << (ProjectParser.StrLiteral - 33)))) != 0):
                             self.state = 589
@@ -3788,6 +4061,7 @@ class ProjectParser ( Parser ):
                         self.state = 594
                         self.match(ProjectParser.Lbrack)
                         self.state = 596
+                        self._errHandler.sync(self)
                         _la = self._input.LA(1)
                         if _la==ProjectParser.Const:
                             self.state = 595
@@ -3827,6 +4101,7 @@ class ProjectParser ( Parser ):
                         self.state = 608
                         self.match(ProjectParser.Lparen)
                         self.state = 610
+                        self._errHandler.sync(self)
                         _la = self._input.LA(1)
                         if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ProjectParser.Float) | (1 << ProjectParser.Double) | (1 << ProjectParser.Int) | (1 << ProjectParser.Long) | (1 << ProjectParser.Short) | (1 << ProjectParser.Char) | (1 << ProjectParser.Class_) | (1 << ProjectParser.Const) | (1 << ProjectParser.Enum) | (1 << ProjectParser.Void))) != 0):
                             self.state = 609
@@ -3850,6 +4125,7 @@ class ProjectParser ( Parser ):
             self.unrollRecursionContexts(_parentctx)
         return localctx
 
+
     class InitializerContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
@@ -3860,9 +4136,18 @@ class ProjectParser ( Parser ):
             return self.getTypedRuleContext(ProjectParser.AssignmentExprContext,0)
 
 
+        def Lbrace(self):
+            return self.getToken(ProjectParser.Lbrace, 0)
+
         def initializerList(self):
             return self.getTypedRuleContext(ProjectParser.InitializerListContext,0)
 
+
+        def Rbrace(self):
+            return self.getToken(ProjectParser.Rbrace, 0)
+
+        def Comma(self):
+            return self.getToken(ProjectParser.Comma, 0)
 
         def getRuleIndex(self):
             return ProjectParser.RULE_initializer
@@ -3884,7 +4169,7 @@ class ProjectParser ( Parser ):
         self.enterRule(localctx, 86, self.RULE_initializer)
         try:
             self.state = 628
-            self._errHandler.sync(self);
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,68,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
@@ -3923,6 +4208,7 @@ class ProjectParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class InitializerListContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
@@ -3940,6 +4226,9 @@ class ProjectParser ( Parser ):
         def initializerList(self):
             return self.getTypedRuleContext(ProjectParser.InitializerListContext,0)
 
+
+        def Comma(self):
+            return self.getToken(ProjectParser.Comma, 0)
 
         def getRuleIndex(self):
             return ProjectParser.RULE_initializerList
@@ -3965,6 +4254,7 @@ class ProjectParser ( Parser ):
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 632
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==ProjectParser.Lbrack or _la==ProjectParser.Dot:
                 self.state = 631
@@ -3991,6 +4281,7 @@ class ProjectParser ( Parser ):
                     self.state = 637
                     self.match(ProjectParser.Comma)
                     self.state = 639
+                    self._errHandler.sync(self)
                     _la = self._input.LA(1)
                     if _la==ProjectParser.Lbrack or _la==ProjectParser.Dot:
                         self.state = 638
@@ -4011,6 +4302,7 @@ class ProjectParser ( Parser ):
             self.unrollRecursionContexts(_parentctx)
         return localctx
 
+
     class DesignationContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
@@ -4020,6 +4312,9 @@ class ProjectParser ( Parser ):
         def designatorList(self):
             return self.getTypedRuleContext(ProjectParser.DesignatorListContext,0)
 
+
+        def Assign(self):
+            return self.getToken(ProjectParser.Assign, 0)
 
         def getRuleIndex(self):
             return ProjectParser.RULE_designation
@@ -4052,6 +4347,7 @@ class ProjectParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
+
 
     class DesignatorListContext(ParserRuleContext):
 
@@ -4120,15 +4416,25 @@ class ProjectParser ( Parser ):
             self.unrollRecursionContexts(_parentctx)
         return localctx
 
+
     class DesignatorContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
             super(ProjectParser.DesignatorContext, self).__init__(parent, invokingState)
             self.parser = parser
 
+        def Lbrack(self):
+            return self.getToken(ProjectParser.Lbrack, 0)
+
         def constantExpr(self):
             return self.getTypedRuleContext(ProjectParser.ConstantExprContext,0)
 
+
+        def Rbrack(self):
+            return self.getToken(ProjectParser.Rbrack, 0)
+
+        def Dot(self):
+            return self.getToken(ProjectParser.Dot, 0)
 
         def ID(self):
             return self.getToken(ProjectParser.ID, 0)
@@ -4153,6 +4459,7 @@ class ProjectParser ( Parser ):
         self.enterRule(localctx, 94, self.RULE_designator)
         try:
             self.state = 666
+            self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [ProjectParser.Lbrack]:
                 self.enterOuterAlt(localctx, 1)
@@ -4162,14 +4469,14 @@ class ProjectParser ( Parser ):
                 self.constantExpr()
                 self.state = 662
                 self.match(ProjectParser.Rbrack)
-
+                pass
             elif token in [ProjectParser.Dot]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 664
                 self.match(ProjectParser.Dot)
                 self.state = 665
                 self.match(ProjectParser.ID)
-
+                pass
             else:
                 raise NoViableAltException(self)
 
@@ -4180,6 +4487,7 @@ class ProjectParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
+
 
     class StatementContext(ParserRuleContext):
 
@@ -4231,7 +4539,7 @@ class ProjectParser ( Parser ):
         self.enterRule(localctx, 96, self.RULE_statement)
         try:
             self.state = 674
-            self._errHandler.sync(self);
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,74,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
@@ -4278,6 +4586,7 @@ class ProjectParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class LabeledStatementContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
@@ -4287,13 +4596,22 @@ class ProjectParser ( Parser ):
         def ID(self):
             return self.getToken(ProjectParser.ID, 0)
 
+        def Colon(self):
+            return self.getToken(ProjectParser.Colon, 0)
+
         def statement(self):
             return self.getTypedRuleContext(ProjectParser.StatementContext,0)
 
 
+        def Case(self):
+            return self.getToken(ProjectParser.Case, 0)
+
         def constantExpr(self):
             return self.getTypedRuleContext(ProjectParser.ConstantExprContext,0)
 
+
+        def Default(self):
+            return self.getToken(ProjectParser.Default, 0)
 
         def getRuleIndex(self):
             return ProjectParser.RULE_labeledStatement
@@ -4315,6 +4633,7 @@ class ProjectParser ( Parser ):
         self.enterRule(localctx, 98, self.RULE_labeledStatement)
         try:
             self.state = 687
+            self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [ProjectParser.ID]:
                 self.enterOuterAlt(localctx, 1)
@@ -4324,7 +4643,7 @@ class ProjectParser ( Parser ):
                 self.match(ProjectParser.Colon)
                 self.state = 678
                 self.statement()
-
+                pass
             elif token in [ProjectParser.Case]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 679
@@ -4335,7 +4654,7 @@ class ProjectParser ( Parser ):
                 self.match(ProjectParser.Colon)
                 self.state = 682
                 self.statement()
-
+                pass
             elif token in [ProjectParser.Default]:
                 self.enterOuterAlt(localctx, 3)
                 self.state = 684
@@ -4344,7 +4663,7 @@ class ProjectParser ( Parser ):
                 self.match(ProjectParser.Colon)
                 self.state = 686
                 self.statement()
-
+                pass
             else:
                 raise NoViableAltException(self)
 
@@ -4356,11 +4675,18 @@ class ProjectParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class CompoundStatementContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
             super(ProjectParser.CompoundStatementContext, self).__init__(parent, invokingState)
             self.parser = parser
+
+        def Lbrace(self):
+            return self.getToken(ProjectParser.Lbrace, 0)
+
+        def Rbrace(self):
+            return self.getToken(ProjectParser.Rbrace, 0)
 
         def blockItemList(self):
             return self.getTypedRuleContext(ProjectParser.BlockItemListContext,0)
@@ -4390,6 +4716,7 @@ class ProjectParser ( Parser ):
             self.state = 689
             self.match(ProjectParser.Lbrace)
             self.state = 691
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ProjectParser.Break) | (1 << ProjectParser.Float) | (1 << ProjectParser.Double) | (1 << ProjectParser.Int) | (1 << ProjectParser.Long) | (1 << ProjectParser.Short) | (1 << ProjectParser.Char) | (1 << ProjectParser.Return) | (1 << ProjectParser.While) | (1 << ProjectParser.If) | (1 << ProjectParser.Class_) | (1 << ProjectParser.Switch) | (1 << ProjectParser.Case) | (1 << ProjectParser.Const) | (1 << ProjectParser.Continue) | (1 << ProjectParser.Enum) | (1 << ProjectParser.For) | (1 << ProjectParser.Void) | (1 << ProjectParser.Default) | (1 << ProjectParser.Lparen) | (1 << ProjectParser.Lbrace) | (1 << ProjectParser.Semi) | (1 << ProjectParser.Add) | (1 << ProjectParser.Sub) | (1 << ProjectParser.Not) | (1 << ProjectParser.ID))) != 0) or _la==ProjectParser.Constant or _la==ProjectParser.StrLiteral:
                 self.state = 690
@@ -4405,6 +4732,7 @@ class ProjectParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
+
 
     class BlockItemListContext(ParserRuleContext):
 
@@ -4473,6 +4801,7 @@ class ProjectParser ( Parser ):
             self.unrollRecursionContexts(_parentctx)
         return localctx
 
+
     class BlockItemContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
@@ -4507,17 +4836,18 @@ class ProjectParser ( Parser ):
         self.enterRule(localctx, 104, self.RULE_blockItem)
         try:
             self.state = 707
+            self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [ProjectParser.Float, ProjectParser.Double, ProjectParser.Int, ProjectParser.Long, ProjectParser.Short, ProjectParser.Char, ProjectParser.Class_, ProjectParser.Const, ProjectParser.Enum, ProjectParser.Void]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 705
                 self.declaration()
-
+                pass
             elif token in [ProjectParser.Break, ProjectParser.Return, ProjectParser.While, ProjectParser.If, ProjectParser.Switch, ProjectParser.Case, ProjectParser.Continue, ProjectParser.For, ProjectParser.Default, ProjectParser.Lparen, ProjectParser.Lbrace, ProjectParser.Semi, ProjectParser.Add, ProjectParser.Sub, ProjectParser.Not, ProjectParser.ID, ProjectParser.Constant, ProjectParser.StrLiteral]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 706
                 self.statement()
-
+                pass
             else:
                 raise NoViableAltException(self)
 
@@ -4529,11 +4859,15 @@ class ProjectParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class ExpressionStatementContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
             super(ProjectParser.ExpressionStatementContext, self).__init__(parent, invokingState)
             self.parser = parser
+
+        def Semi(self):
+            return self.getToken(ProjectParser.Semi, 0)
 
         def expr(self):
             return self.getTypedRuleContext(ProjectParser.ExprContext,0)
@@ -4561,6 +4895,7 @@ class ProjectParser ( Parser ):
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 710
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if ((((_la - 33)) & ~0x3f) == 0 and ((1 << (_la - 33)) & ((1 << (ProjectParser.Lparen - 33)) | (1 << (ProjectParser.Add - 33)) | (1 << (ProjectParser.Sub - 33)) | (1 << (ProjectParser.Not - 33)) | (1 << (ProjectParser.ID - 33)) | (1 << (ProjectParser.Constant - 33)) | (1 << (ProjectParser.StrLiteral - 33)))) != 0):
                 self.state = 709
@@ -4577,15 +4912,25 @@ class ProjectParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class SelectionStatementContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
             super(ProjectParser.SelectionStatementContext, self).__init__(parent, invokingState)
             self.parser = parser
 
+        def If(self):
+            return self.getToken(ProjectParser.If, 0)
+
+        def Lparen(self):
+            return self.getToken(ProjectParser.Lparen, 0)
+
         def expr(self):
             return self.getTypedRuleContext(ProjectParser.ExprContext,0)
 
+
+        def Rparen(self):
+            return self.getToken(ProjectParser.Rparen, 0)
 
         def statement(self, i=None):
             if i is None:
@@ -4593,6 +4938,12 @@ class ProjectParser ( Parser ):
             else:
                 return self.getTypedRuleContext(ProjectParser.StatementContext,i)
 
+
+        def Else(self):
+            return self.getToken(ProjectParser.Else, 0)
+
+        def Switch(self):
+            return self.getToken(ProjectParser.Switch, 0)
 
         def getRuleIndex(self):
             return ProjectParser.RULE_selectionStatement
@@ -4614,6 +4965,7 @@ class ProjectParser ( Parser ):
         self.enterRule(localctx, 108, self.RULE_selectionStatement)
         try:
             self.state = 729
+            self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [ProjectParser.If]:
                 self.enterOuterAlt(localctx, 1)
@@ -4628,7 +4980,7 @@ class ProjectParser ( Parser ):
                 self.state = 718
                 self.statement()
                 self.state = 721
-                self._errHandler.sync(self);
+                self._errHandler.sync(self)
                 la_ = self._interp.adaptivePredict(self._input,80,self._ctx)
                 if la_ == 1:
                     self.state = 719
@@ -4637,7 +4989,7 @@ class ProjectParser ( Parser ):
                     self.statement()
 
 
-
+                pass
             elif token in [ProjectParser.Switch]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 723
@@ -4650,7 +5002,7 @@ class ProjectParser ( Parser ):
                 self.match(ProjectParser.Rparen)
                 self.state = 727
                 self.statement()
-
+                pass
             else:
                 raise NoViableAltException(self)
 
@@ -4662,11 +5014,18 @@ class ProjectParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class IterationStatementContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
             super(ProjectParser.IterationStatementContext, self).__init__(parent, invokingState)
             self.parser = parser
+
+        def While(self):
+            return self.getToken(ProjectParser.While, 0)
+
+        def Lparen(self):
+            return self.getToken(ProjectParser.Lparen, 0)
 
         def expr(self, i=None):
             if i is None:
@@ -4675,9 +5034,21 @@ class ProjectParser ( Parser ):
                 return self.getTypedRuleContext(ProjectParser.ExprContext,i)
 
 
+        def Rparen(self):
+            return self.getToken(ProjectParser.Rparen, 0)
+
         def statement(self):
             return self.getTypedRuleContext(ProjectParser.StatementContext,0)
 
+
+        def For(self):
+            return self.getToken(ProjectParser.For, 0)
+
+        def Semi(self, i=None):
+            if i is None:
+                return self.getTokens(ProjectParser.Semi)
+            else:
+                return self.getToken(ProjectParser.Semi, i)
 
         def declaration(self):
             return self.getTypedRuleContext(ProjectParser.DeclarationContext,0)
@@ -4704,7 +5075,7 @@ class ProjectParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.state = 765
-            self._errHandler.sync(self);
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,87,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
@@ -4727,6 +5098,7 @@ class ProjectParser ( Parser ):
                 self.state = 738
                 self.match(ProjectParser.Lparen)
                 self.state = 740
+                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if ((((_la - 33)) & ~0x3f) == 0 and ((1 << (_la - 33)) & ((1 << (ProjectParser.Lparen - 33)) | (1 << (ProjectParser.Add - 33)) | (1 << (ProjectParser.Sub - 33)) | (1 << (ProjectParser.Not - 33)) | (1 << (ProjectParser.ID - 33)) | (1 << (ProjectParser.Constant - 33)) | (1 << (ProjectParser.StrLiteral - 33)))) != 0):
                     self.state = 739
@@ -4736,6 +5108,7 @@ class ProjectParser ( Parser ):
                 self.state = 742
                 self.match(ProjectParser.Semi)
                 self.state = 744
+                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if ((((_la - 33)) & ~0x3f) == 0 and ((1 << (_la - 33)) & ((1 << (ProjectParser.Lparen - 33)) | (1 << (ProjectParser.Add - 33)) | (1 << (ProjectParser.Sub - 33)) | (1 << (ProjectParser.Not - 33)) | (1 << (ProjectParser.ID - 33)) | (1 << (ProjectParser.Constant - 33)) | (1 << (ProjectParser.StrLiteral - 33)))) != 0):
                     self.state = 743
@@ -4745,6 +5118,7 @@ class ProjectParser ( Parser ):
                 self.state = 746
                 self.match(ProjectParser.Semi)
                 self.state = 748
+                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if ((((_la - 33)) & ~0x3f) == 0 and ((1 << (_la - 33)) & ((1 << (ProjectParser.Lparen - 33)) | (1 << (ProjectParser.Add - 33)) | (1 << (ProjectParser.Sub - 33)) | (1 << (ProjectParser.Not - 33)) | (1 << (ProjectParser.ID - 33)) | (1 << (ProjectParser.Constant - 33)) | (1 << (ProjectParser.StrLiteral - 33)))) != 0):
                     self.state = 747
@@ -4766,6 +5140,7 @@ class ProjectParser ( Parser ):
                 self.state = 754
                 self.declaration()
                 self.state = 756
+                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if ((((_la - 33)) & ~0x3f) == 0 and ((1 << (_la - 33)) & ((1 << (ProjectParser.Lparen - 33)) | (1 << (ProjectParser.Add - 33)) | (1 << (ProjectParser.Sub - 33)) | (1 << (ProjectParser.Not - 33)) | (1 << (ProjectParser.ID - 33)) | (1 << (ProjectParser.Constant - 33)) | (1 << (ProjectParser.StrLiteral - 33)))) != 0):
                     self.state = 755
@@ -4775,6 +5150,7 @@ class ProjectParser ( Parser ):
                 self.state = 758
                 self.match(ProjectParser.Semi)
                 self.state = 760
+                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if ((((_la - 33)) & ~0x3f) == 0 and ((1 << (_la - 33)) & ((1 << (ProjectParser.Lparen - 33)) | (1 << (ProjectParser.Add - 33)) | (1 << (ProjectParser.Sub - 33)) | (1 << (ProjectParser.Not - 33)) | (1 << (ProjectParser.ID - 33)) | (1 << (ProjectParser.Constant - 33)) | (1 << (ProjectParser.StrLiteral - 33)))) != 0):
                     self.state = 759
@@ -4796,11 +5172,24 @@ class ProjectParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class JumpStatementContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
             super(ProjectParser.JumpStatementContext, self).__init__(parent, invokingState)
             self.parser = parser
+
+        def Continue(self):
+            return self.getToken(ProjectParser.Continue, 0)
+
+        def Semi(self):
+            return self.getToken(ProjectParser.Semi, 0)
+
+        def Break(self):
+            return self.getToken(ProjectParser.Break, 0)
+
+        def Return(self):
+            return self.getToken(ProjectParser.Return, 0)
 
         def expr(self):
             return self.getTypedRuleContext(ProjectParser.ExprContext,0)
@@ -4827,6 +5216,7 @@ class ProjectParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.state = 776
+            self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [ProjectParser.Continue]:
                 self.enterOuterAlt(localctx, 1)
@@ -4834,19 +5224,20 @@ class ProjectParser ( Parser ):
                 self.match(ProjectParser.Continue)
                 self.state = 768
                 self.match(ProjectParser.Semi)
-
+                pass
             elif token in [ProjectParser.Break]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 769
                 self.match(ProjectParser.Break)
                 self.state = 770
                 self.match(ProjectParser.Semi)
-
+                pass
             elif token in [ProjectParser.Return]:
                 self.enterOuterAlt(localctx, 3)
                 self.state = 771
                 self.match(ProjectParser.Return)
                 self.state = 773
+                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if ((((_la - 33)) & ~0x3f) == 0 and ((1 << (_la - 33)) & ((1 << (ProjectParser.Lparen - 33)) | (1 << (ProjectParser.Add - 33)) | (1 << (ProjectParser.Sub - 33)) | (1 << (ProjectParser.Not - 33)) | (1 << (ProjectParser.ID - 33)) | (1 << (ProjectParser.Constant - 33)) | (1 << (ProjectParser.StrLiteral - 33)))) != 0):
                     self.state = 772
@@ -4855,7 +5246,7 @@ class ProjectParser ( Parser ):
 
                 self.state = 775
                 self.match(ProjectParser.Semi)
-
+                pass
             else:
                 raise NoViableAltException(self)
 
@@ -4866,6 +5257,7 @@ class ProjectParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
+
 
     class ProgramContext(ParserRuleContext):
 
@@ -4902,6 +5294,7 @@ class ProjectParser ( Parser ):
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 779
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ProjectParser.Float) | (1 << ProjectParser.Double) | (1 << ProjectParser.Int) | (1 << ProjectParser.Long) | (1 << ProjectParser.Short) | (1 << ProjectParser.Char) | (1 << ProjectParser.Class_) | (1 << ProjectParser.Const) | (1 << ProjectParser.Enum) | (1 << ProjectParser.Void) | (1 << ProjectParser.Lparen) | (1 << ProjectParser.Semi) | (1 << ProjectParser.ID))) != 0):
                 self.state = 778
@@ -4917,6 +5310,7 @@ class ProjectParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
+
 
     class TranslationUnitContext(ParserRuleContext):
 
@@ -4985,6 +5379,7 @@ class ProjectParser ( Parser ):
             self.unrollRecursionContexts(_parentctx)
         return localctx
 
+
     class ExternalDeclarationContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
@@ -4998,6 +5393,9 @@ class ProjectParser ( Parser ):
         def declaration(self):
             return self.getTypedRuleContext(ProjectParser.DeclarationContext,0)
 
+
+        def Semi(self):
+            return self.getToken(ProjectParser.Semi, 0)
 
         def getRuleIndex(self):
             return ProjectParser.RULE_externalDeclaration
@@ -5019,7 +5417,7 @@ class ProjectParser ( Parser ):
         self.enterRule(localctx, 118, self.RULE_externalDeclaration)
         try:
             self.state = 796
-            self._errHandler.sync(self);
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,92,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
@@ -5047,6 +5445,7 @@ class ProjectParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
+
 
     class FunctionDefinitionContext(ParserRuleContext):
 
@@ -5092,6 +5491,7 @@ class ProjectParser ( Parser ):
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 799
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ProjectParser.Float) | (1 << ProjectParser.Double) | (1 << ProjectParser.Int) | (1 << ProjectParser.Long) | (1 << ProjectParser.Short) | (1 << ProjectParser.Char) | (1 << ProjectParser.Class_) | (1 << ProjectParser.Const) | (1 << ProjectParser.Enum) | (1 << ProjectParser.Void))) != 0):
                 self.state = 798
@@ -5101,6 +5501,7 @@ class ProjectParser ( Parser ):
             self.state = 801
             self.declarator()
             self.state = 803
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ProjectParser.Float) | (1 << ProjectParser.Double) | (1 << ProjectParser.Int) | (1 << ProjectParser.Long) | (1 << ProjectParser.Short) | (1 << ProjectParser.Char) | (1 << ProjectParser.Class_) | (1 << ProjectParser.Const) | (1 << ProjectParser.Enum) | (1 << ProjectParser.Void))) != 0):
                 self.state = 802
@@ -5116,6 +5517,7 @@ class ProjectParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
+
 
     class DeclarationListContext(ParserRuleContext):
 
