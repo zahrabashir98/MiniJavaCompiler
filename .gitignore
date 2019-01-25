@@ -1,4 +1,7 @@
 .idea
 .vscode
 venv
-*.pyc
+ProjectLexer.pyc
+ProjectListener.py
+ProjectListener.pyc
+ProjectParser.py
