@@ -18,24 +18,24 @@ localDeclaration
 :	varDeclaration ;
 
 varDeclaration	
-:	type Identifier ';';
+:	kind Identifier ';';
 
 methodDeclaration	
-:	'public' type Identifier '(' parameterList? ')' '{' methodBody '}';
+:	'public' kind Identifier '(' parameterList? ')' '{' methodBody '}';
 
 parameterList
 :   parameter (',' parameter)*
 ;
 
 parameter
-:   type Identifier
+:   kind Identifier
 ;
 
 methodBody
 :	localDeclaration* statement* RETURN expression ';'
 ;
 
-type	
+kind	
 :	'int' '[' ']'
 |	'boolean'
 |	'int'
@@ -211,6 +211,12 @@ DecimalNumeral
 	WS
 	:   [ \r\t\n]+ -> skip
 	;   
+
+
+
+
+
+    
 
 	MULTILINE_COMMENT
 	:  '/*' .*? '*/' -> skip
