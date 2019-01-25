@@ -4,219 +4,21 @@ from antlr4 import *
 # This class defines a complete listener for a parse tree produced by ProjectParser.
 class ProjectListener(ParseTreeListener):
 
-    # Enter a parse tree produced by ProjectParser#primaryExpr.
-    def enterPrimaryExpr(self, ctx):
+    # Enter a parse tree produced by ProjectParser#goal.
+    def enterGoal(self, ctx):
         pass
 
-    # Exit a parse tree produced by ProjectParser#primaryExpr.
-    def exitPrimaryExpr(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by ProjectParser#postfixExpr.
-    def enterPostfixExpr(self, ctx):
-        pass
-
-    # Exit a parse tree produced by ProjectParser#postfixExpr.
-    def exitPostfixExpr(self, ctx):
+    # Exit a parse tree produced by ProjectParser#goal.
+    def exitGoal(self, ctx):
         pass
 
 
-    # Enter a parse tree produced by ProjectParser#argumentExprList.
-    def enterArgumentExprList(self, ctx):
+    # Enter a parse tree produced by ProjectParser#mainClass.
+    def enterMainClass(self, ctx):
         pass
 
-    # Exit a parse tree produced by ProjectParser#argumentExprList.
-    def exitArgumentExprList(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by ProjectParser#unaryExpr.
-    def enterUnaryExpr(self, ctx):
-        pass
-
-    # Exit a parse tree produced by ProjectParser#unaryExpr.
-    def exitUnaryExpr(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by ProjectParser#unaryOperator.
-    def enterUnaryOperator(self, ctx):
-        pass
-
-    # Exit a parse tree produced by ProjectParser#unaryOperator.
-    def exitUnaryOperator(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by ProjectParser#castExpr.
-    def enterCastExpr(self, ctx):
-        pass
-
-    # Exit a parse tree produced by ProjectParser#castExpr.
-    def exitCastExpr(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by ProjectParser#multiplicativeExpr.
-    def enterMultiplicativeExpr(self, ctx):
-        pass
-
-    # Exit a parse tree produced by ProjectParser#multiplicativeExpr.
-    def exitMultiplicativeExpr(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by ProjectParser#additiveExpr.
-    def enterAdditiveExpr(self, ctx):
-        pass
-
-    # Exit a parse tree produced by ProjectParser#additiveExpr.
-    def exitAdditiveExpr(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by ProjectParser#relationalExpr.
-    def enterRelationalExpr(self, ctx):
-        pass
-
-    # Exit a parse tree produced by ProjectParser#relationalExpr.
-    def exitRelationalExpr(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by ProjectParser#equalityExpr.
-    def enterEqualityExpr(self, ctx):
-        pass
-
-    # Exit a parse tree produced by ProjectParser#equalityExpr.
-    def exitEqualityExpr(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by ProjectParser#logicalAndExpr.
-    def enterLogicalAndExpr(self, ctx):
-        pass
-
-    # Exit a parse tree produced by ProjectParser#logicalAndExpr.
-    def exitLogicalAndExpr(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by ProjectParser#logicalOrExpr.
-    def enterLogicalOrExpr(self, ctx):
-        pass
-
-    # Exit a parse tree produced by ProjectParser#logicalOrExpr.
-    def exitLogicalOrExpr(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by ProjectParser#assignmentExpr.
-    def enterAssignmentExpr(self, ctx):
-        pass
-
-    # Exit a parse tree produced by ProjectParser#assignmentExpr.
-    def exitAssignmentExpr(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by ProjectParser#expr.
-    def enterExpr(self, ctx):
-        pass
-
-    # Exit a parse tree produced by ProjectParser#expr.
-    def exitExpr(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by ProjectParser#constantExpr.
-    def enterConstantExpr(self, ctx):
-        pass
-
-    # Exit a parse tree produced by ProjectParser#constantExpr.
-    def exitConstantExpr(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by ProjectParser#declaration.
-    def enterDeclaration(self, ctx):
-        pass
-
-    # Exit a parse tree produced by ProjectParser#declaration.
-    def exitDeclaration(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by ProjectParser#declarationSpecifiers.
-    def enterDeclarationSpecifiers(self, ctx):
-        pass
-
-    # Exit a parse tree produced by ProjectParser#declarationSpecifiers.
-    def exitDeclarationSpecifiers(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by ProjectParser#declarationSpecifiers2.
-    def enterDeclarationSpecifiers2(self, ctx):
-        pass
-
-    # Exit a parse tree produced by ProjectParser#declarationSpecifiers2.
-    def exitDeclarationSpecifiers2(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by ProjectParser#declarationSpecifier.
-    def enterDeclarationSpecifier(self, ctx):
-        pass
-
-    # Exit a parse tree produced by ProjectParser#declarationSpecifier.
-    def exitDeclarationSpecifier(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by ProjectParser#initDeclaratorList.
-    def enterInitDeclaratorList(self, ctx):
-        pass
-
-    # Exit a parse tree produced by ProjectParser#initDeclaratorList.
-    def exitInitDeclaratorList(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by ProjectParser#initDeclarator.
-    def enterInitDeclarator(self, ctx):
-        pass
-
-    # Exit a parse tree produced by ProjectParser#initDeclarator.
-    def exitInitDeclarator(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by ProjectParser#typeSpecifier.
-    def enterTypeSpecifier(self, ctx):
-        pass
-
-    # Exit a parse tree produced by ProjectParser#typeSpecifier.
-    def exitTypeSpecifier(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by ProjectParser#classSpecifier.
-    def enterClassSpecifier(self, ctx):
-        pass
-
-    # Exit a parse tree produced by ProjectParser#classSpecifier.
-    def exitClassSpecifier(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by ProjectParser#classDeclarationList.
-    def enterClassDeclarationList(self, ctx):
-        pass
-
-    # Exit a parse tree produced by ProjectParser#classDeclarationList.
-    def exitClassDeclarationList(self, ctx):
+    # Exit a parse tree produced by ProjectParser#mainClass.
+    def exitMainClass(self, ctx):
         pass
 
 
@@ -229,111 +31,39 @@ class ProjectListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by ProjectParser#specifierQualifierList.
-    def enterSpecifierQualifierList(self, ctx):
+    # Enter a parse tree produced by ProjectParser#fieldDeclaration.
+    def enterFieldDeclaration(self, ctx):
         pass
 
-    # Exit a parse tree produced by ProjectParser#specifierQualifierList.
-    def exitSpecifierQualifierList(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by ProjectParser#classDeclaratorList.
-    def enterClassDeclaratorList(self, ctx):
-        pass
-
-    # Exit a parse tree produced by ProjectParser#classDeclaratorList.
-    def exitClassDeclaratorList(self, ctx):
+    # Exit a parse tree produced by ProjectParser#fieldDeclaration.
+    def exitFieldDeclaration(self, ctx):
         pass
 
 
-    # Enter a parse tree produced by ProjectParser#classDeclarator.
-    def enterClassDeclarator(self, ctx):
+    # Enter a parse tree produced by ProjectParser#localDeclaration.
+    def enterLocalDeclaration(self, ctx):
         pass
 
-    # Exit a parse tree produced by ProjectParser#classDeclarator.
-    def exitClassDeclarator(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by ProjectParser#enumSpecifier.
-    def enterEnumSpecifier(self, ctx):
-        pass
-
-    # Exit a parse tree produced by ProjectParser#enumSpecifier.
-    def exitEnumSpecifier(self, ctx):
+    # Exit a parse tree produced by ProjectParser#localDeclaration.
+    def exitLocalDeclaration(self, ctx):
         pass
 
 
-    # Enter a parse tree produced by ProjectParser#enumeratorList.
-    def enterEnumeratorList(self, ctx):
+    # Enter a parse tree produced by ProjectParser#varDeclaration.
+    def enterVarDeclaration(self, ctx):
         pass
 
-    # Exit a parse tree produced by ProjectParser#enumeratorList.
-    def exitEnumeratorList(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by ProjectParser#enumerator.
-    def enterEnumerator(self, ctx):
-        pass
-
-    # Exit a parse tree produced by ProjectParser#enumerator.
-    def exitEnumerator(self, ctx):
+    # Exit a parse tree produced by ProjectParser#varDeclaration.
+    def exitVarDeclaration(self, ctx):
         pass
 
 
-    # Enter a parse tree produced by ProjectParser#enumerationConstant.
-    def enterEnumerationConstant(self, ctx):
+    # Enter a parse tree produced by ProjectParser#methodDeclaration.
+    def enterMethodDeclaration(self, ctx):
         pass
 
-    # Exit a parse tree produced by ProjectParser#enumerationConstant.
-    def exitEnumerationConstant(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by ProjectParser#typeQualifier.
-    def enterTypeQualifier(self, ctx):
-        pass
-
-    # Exit a parse tree produced by ProjectParser#typeQualifier.
-    def exitTypeQualifier(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by ProjectParser#declarator.
-    def enterDeclarator(self, ctx):
-        pass
-
-    # Exit a parse tree produced by ProjectParser#declarator.
-    def exitDeclarator(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by ProjectParser#directDeclarator.
-    def enterDirectDeclarator(self, ctx):
-        pass
-
-    # Exit a parse tree produced by ProjectParser#directDeclarator.
-    def exitDirectDeclarator(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by ProjectParser#nestedParenthesesBlock.
-    def enterNestedParenthesesBlock(self, ctx):
-        pass
-
-    # Exit a parse tree produced by ProjectParser#nestedParenthesesBlock.
-    def exitNestedParenthesesBlock(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by ProjectParser#parameterTypeList.
-    def enterParameterTypeList(self, ctx):
-        pass
-
-    # Exit a parse tree produced by ProjectParser#parameterTypeList.
-    def exitParameterTypeList(self, ctx):
+    # Exit a parse tree produced by ProjectParser#methodDeclaration.
+    def exitMethodDeclaration(self, ctx):
         pass
 
 
@@ -346,219 +76,264 @@ class ProjectListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by ProjectParser#parameterDeclaration.
-    def enterParameterDeclaration(self, ctx):
+    # Enter a parse tree produced by ProjectParser#parameter.
+    def enterParameter(self, ctx):
         pass
 
-    # Exit a parse tree produced by ProjectParser#parameterDeclaration.
-    def exitParameterDeclaration(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by ProjectParser#identifierList.
-    def enterIdentifierList(self, ctx):
-        pass
-
-    # Exit a parse tree produced by ProjectParser#identifierList.
-    def exitIdentifierList(self, ctx):
+    # Exit a parse tree produced by ProjectParser#parameter.
+    def exitParameter(self, ctx):
         pass
 
 
-    # Enter a parse tree produced by ProjectParser#typeName.
-    def enterTypeName(self, ctx):
+    # Enter a parse tree produced by ProjectParser#methodBody.
+    def enterMethodBody(self, ctx):
         pass
 
-    # Exit a parse tree produced by ProjectParser#typeName.
-    def exitTypeName(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by ProjectParser#abstractDeclarator.
-    def enterAbstractDeclarator(self, ctx):
-        pass
-
-    # Exit a parse tree produced by ProjectParser#abstractDeclarator.
-    def exitAbstractDeclarator(self, ctx):
+    # Exit a parse tree produced by ProjectParser#methodBody.
+    def exitMethodBody(self, ctx):
         pass
 
 
-    # Enter a parse tree produced by ProjectParser#directAbstractDeclarator.
-    def enterDirectAbstractDeclarator(self, ctx):
+    # Enter a parse tree produced by ProjectParser#type.
+    def enterType(self, ctx):
         pass
 
-    # Exit a parse tree produced by ProjectParser#directAbstractDeclarator.
-    def exitDirectAbstractDeclarator(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by ProjectParser#initializer.
-    def enterInitializer(self, ctx):
-        pass
-
-    # Exit a parse tree produced by ProjectParser#initializer.
-    def exitInitializer(self, ctx):
+    # Exit a parse tree produced by ProjectParser#type.
+    def exitType(self, ctx):
         pass
 
 
-    # Enter a parse tree produced by ProjectParser#initializerList.
-    def enterInitializerList(self, ctx):
+    # Enter a parse tree produced by ProjectParser#nestedStatement.
+    def enterNestedStatement(self, ctx):
         pass
 
-    # Exit a parse tree produced by ProjectParser#initializerList.
-    def exitInitializerList(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by ProjectParser#designation.
-    def enterDesignation(self, ctx):
-        pass
-
-    # Exit a parse tree produced by ProjectParser#designation.
-    def exitDesignation(self, ctx):
+    # Exit a parse tree produced by ProjectParser#nestedStatement.
+    def exitNestedStatement(self, ctx):
         pass
 
 
-    # Enter a parse tree produced by ProjectParser#designatorList.
-    def enterDesignatorList(self, ctx):
+    # Enter a parse tree produced by ProjectParser#ifElseStatement.
+    def enterIfElseStatement(self, ctx):
         pass
 
-    # Exit a parse tree produced by ProjectParser#designatorList.
-    def exitDesignatorList(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by ProjectParser#designator.
-    def enterDesignator(self, ctx):
-        pass
-
-    # Exit a parse tree produced by ProjectParser#designator.
-    def exitDesignator(self, ctx):
+    # Exit a parse tree produced by ProjectParser#ifElseStatement.
+    def exitIfElseStatement(self, ctx):
         pass
 
 
-    # Enter a parse tree produced by ProjectParser#statement.
-    def enterStatement(self, ctx):
+    # Enter a parse tree produced by ProjectParser#whileStatement.
+    def enterWhileStatement(self, ctx):
         pass
 
-    # Exit a parse tree produced by ProjectParser#statement.
-    def exitStatement(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by ProjectParser#labeledStatement.
-    def enterLabeledStatement(self, ctx):
-        pass
-
-    # Exit a parse tree produced by ProjectParser#labeledStatement.
-    def exitLabeledStatement(self, ctx):
+    # Exit a parse tree produced by ProjectParser#whileStatement.
+    def exitWhileStatement(self, ctx):
         pass
 
 
-    # Enter a parse tree produced by ProjectParser#compoundStatement.
-    def enterCompoundStatement(self, ctx):
+    # Enter a parse tree produced by ProjectParser#printStatement.
+    def enterPrintStatement(self, ctx):
         pass
 
-    # Exit a parse tree produced by ProjectParser#compoundStatement.
-    def exitCompoundStatement(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by ProjectParser#blockItemList.
-    def enterBlockItemList(self, ctx):
-        pass
-
-    # Exit a parse tree produced by ProjectParser#blockItemList.
-    def exitBlockItemList(self, ctx):
+    # Exit a parse tree produced by ProjectParser#printStatement.
+    def exitPrintStatement(self, ctx):
         pass
 
 
-    # Enter a parse tree produced by ProjectParser#blockItem.
-    def enterBlockItem(self, ctx):
+    # Enter a parse tree produced by ProjectParser#variableAssignmentStatement.
+    def enterVariableAssignmentStatement(self, ctx):
         pass
 
-    # Exit a parse tree produced by ProjectParser#blockItem.
-    def exitBlockItem(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by ProjectParser#expressionStatement.
-    def enterExpressionStatement(self, ctx):
-        pass
-
-    # Exit a parse tree produced by ProjectParser#expressionStatement.
-    def exitExpressionStatement(self, ctx):
+    # Exit a parse tree produced by ProjectParser#variableAssignmentStatement.
+    def exitVariableAssignmentStatement(self, ctx):
         pass
 
 
-    # Enter a parse tree produced by ProjectParser#selectionStatement.
-    def enterSelectionStatement(self, ctx):
+    # Enter a parse tree produced by ProjectParser#arrayAssignmentStatement.
+    def enterArrayAssignmentStatement(self, ctx):
         pass
 
-    # Exit a parse tree produced by ProjectParser#selectionStatement.
-    def exitSelectionStatement(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by ProjectParser#iterationStatement.
-    def enterIterationStatement(self, ctx):
-        pass
-
-    # Exit a parse tree produced by ProjectParser#iterationStatement.
-    def exitIterationStatement(self, ctx):
+    # Exit a parse tree produced by ProjectParser#arrayAssignmentStatement.
+    def exitArrayAssignmentStatement(self, ctx):
         pass
 
 
-    # Enter a parse tree produced by ProjectParser#jumpStatement.
-    def enterJumpStatement(self, ctx):
+    # Enter a parse tree produced by ProjectParser#ifBlock.
+    def enterIfBlock(self, ctx):
         pass
 
-    # Exit a parse tree produced by ProjectParser#jumpStatement.
-    def exitJumpStatement(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by ProjectParser#program.
-    def enterProgram(self, ctx):
-        pass
-
-    # Exit a parse tree produced by ProjectParser#program.
-    def exitProgram(self, ctx):
+    # Exit a parse tree produced by ProjectParser#ifBlock.
+    def exitIfBlock(self, ctx):
         pass
 
 
-    # Enter a parse tree produced by ProjectParser#translationUnit.
-    def enterTranslationUnit(self, ctx):
+    # Enter a parse tree produced by ProjectParser#elseBlock.
+    def enterElseBlock(self, ctx):
         pass
 
-    # Exit a parse tree produced by ProjectParser#translationUnit.
-    def exitTranslationUnit(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by ProjectParser#externalDeclaration.
-    def enterExternalDeclaration(self, ctx):
-        pass
-
-    # Exit a parse tree produced by ProjectParser#externalDeclaration.
-    def exitExternalDeclaration(self, ctx):
+    # Exit a parse tree produced by ProjectParser#elseBlock.
+    def exitElseBlock(self, ctx):
         pass
 
 
-    # Enter a parse tree produced by ProjectParser#functionDefinition.
-    def enterFunctionDefinition(self, ctx):
+    # Enter a parse tree produced by ProjectParser#whileBlock.
+    def enterWhileBlock(self, ctx):
         pass
 
-    # Exit a parse tree produced by ProjectParser#functionDefinition.
-    def exitFunctionDefinition(self, ctx):
+    # Exit a parse tree produced by ProjectParser#whileBlock.
+    def exitWhileBlock(self, ctx):
         pass
 
 
-    # Enter a parse tree produced by ProjectParser#declarationList.
-    def enterDeclarationList(self, ctx):
+    # Enter a parse tree produced by ProjectParser#ltExpression.
+    def enterLtExpression(self, ctx):
         pass
 
-    # Exit a parse tree produced by ProjectParser#declarationList.
-    def exitDeclarationList(self, ctx):
+    # Exit a parse tree produced by ProjectParser#ltExpression.
+    def exitLtExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by ProjectParser#objectInstantiationExpression.
+    def enterObjectInstantiationExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by ProjectParser#objectInstantiationExpression.
+    def exitObjectInstantiationExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by ProjectParser#arrayInstantiationExpression.
+    def enterArrayInstantiationExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by ProjectParser#arrayInstantiationExpression.
+    def exitArrayInstantiationExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by ProjectParser#powExpression.
+    def enterPowExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by ProjectParser#powExpression.
+    def exitPowExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by ProjectParser#identifierExpression.
+    def enterIdentifierExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by ProjectParser#identifierExpression.
+    def exitIdentifierExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by ProjectParser#methodCallExpression.
+    def enterMethodCallExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by ProjectParser#methodCallExpression.
+    def exitMethodCallExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by ProjectParser#notExpression.
+    def enterNotExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by ProjectParser#notExpression.
+    def exitNotExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by ProjectParser#booleanLitExpression.
+    def enterBooleanLitExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by ProjectParser#booleanLitExpression.
+    def exitBooleanLitExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by ProjectParser#parenExpression.
+    def enterParenExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by ProjectParser#parenExpression.
+    def exitParenExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by ProjectParser#intLitExpression.
+    def enterIntLitExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by ProjectParser#intLitExpression.
+    def exitIntLitExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by ProjectParser#andExpression.
+    def enterAndExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by ProjectParser#andExpression.
+    def exitAndExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by ProjectParser#arrayAccessExpression.
+    def enterArrayAccessExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by ProjectParser#arrayAccessExpression.
+    def exitArrayAccessExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by ProjectParser#addExpression.
+    def enterAddExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by ProjectParser#addExpression.
+    def exitAddExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by ProjectParser#thisExpression.
+    def enterThisExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by ProjectParser#thisExpression.
+    def exitThisExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by ProjectParser#arrayLengthExpression.
+    def enterArrayLengthExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by ProjectParser#arrayLengthExpression.
+    def exitArrayLengthExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by ProjectParser#subExpression.
+    def enterSubExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by ProjectParser#subExpression.
+    def exitSubExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by ProjectParser#mulExpression.
+    def enterMulExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by ProjectParser#mulExpression.
+    def exitMulExpression(self, ctx):
         pass
 
 
