@@ -1,220 +1,236 @@
-grammar Minijava;
+grammar Project;
 
-goal	
-:	mainClass classDeclaration* EOF
-;
+// Compile with this Command : antlr4 -Dlanguage=Python2 Project.g4
+
+// LEXER - Tokens
+
+AND             : 'Va';
+OR              : 'Ya';
+Bool            : 'Bool';
+Break           : 'Bepar_biroon';
+String          : 'Reshte';
+Float           : 'Adad_Ashar_bozorg';
+Double          : 'Adad_Ashar_riz';
+Int             : 'Adad_Sahih';
+Long            : 'Adad_Sahih_bozorg';
+Short           : 'Adad_Sahih_riz';
+Char            : 'Harf';
+Return          : 'Bargardoon';
+While           : 'Ta_Vaghti_Ke';
+Private         : 'Khoususi';
+Public          : 'Omoumi';
+If              : 'Agar';
+Class_          : 'Kelas';
+False_          : 'Ghalat';
+True_           : 'Sahih';
+Do              : 'Anjam_Bede';
+Else            : 'Vagar_Na';
+Alias           : 'Mostar';
+Switch          : 'Entekhab';
+Case            : 'Halat';
+Const           : 'Sabet';
+Continue        : 'Edame_Bede';
+Enum            : 'Shomaresh';
+For             : 'Baraye';
+NullLiteral     : 'Null' ;
+Void            : 'Void';
+Default         : 'PishFarz';
 
 
-mainClass	
-:	'class' Identifier '{' 'public' 'static' 'void' 'main' '(' 'String' '[' ']' Identifier ')' '{' statement '}' '}';
+// Tokens - Separators
 
-classDeclaration	
-:	'class' Identifier ( 'extends' Identifier )? '{' fieldDeclaration* methodDeclaration* '}';
+Lparen          : '(';
+Rparen          : ')';
+Lbrace          : '{';
+Rbrace          : '}';
+Lbrack          : '[';
+Rbrack          : ']';
+Semi            : ';';
+Comma           : ',';
+Dot             : '.';
+Colon           : ':';
 
-fieldDeclaration
-:	varDeclaration ;
 
-localDeclaration
-:	varDeclaration ;
+// Tokens - Operators
 
-varDeclaration	
-:	type Identifier ';';
+Assign          : '=';
+Gt              : '>';
+Lt              : '<';
+Equal           : '==';
+Le              : '<=';
+Ge              : '>=';
+Not_Equal       : '!=';
+Inc             : '++';
+Dec             : '--';
+Add             : '+';
+Sub             : '-';
+Mul             : '*';
+Div             : '/';
+Not             : '!';
 
-methodDeclaration	
-:	'public' type Identifier '(' parameterList? ')' '{' methodBody '}';
 
-parameterList
-:   parameter (',' parameter)*
-;
+// Tokens - Others
 
-parameter
-:   type Identifier
-;
+Letter         : [a-zA-Z_];
+Digit          : [0-9];
+ID             : Letter (Letter | Digit)*;
+NonZeroDigit   : [1-9];
+Zero           : '0';
+IntegerConst   : (NonZeroDigit Digit*) | Zero;
+DigitSeq       : Digit+;
+FloatConst     : DigitSeq? '.' DigitSeq | DigitSeq '.';
+CharConst      : '\'' (CChar+)? '\'';
+CChar          : ~['\\\r\n] | EscSeq;
+EscSeq         : '\\' ['"?abfnrtv\\];
+Constant       : IntegerConst | FloatConst | CharConst;
 
-methodBody
-:	localDeclaration* statement* RETURN expression ';'
-;
+StrLiteral     : '"' (SChar+)? '"';
+SChar          : ~["\\\r\n] | EscSeq | '\\\n' | '\\\r\n';
 
-type	
-:	'int' '[' ']'
-|	'boolean'
-|	'int'
-|	Identifier
-;	
+Whitespace     : [ \t]+ -> skip;
+Newline        : ('\r' '\n'? | '\n') -> skip;
+BlockComment   :'/*' .*? '*/' -> skip;
+LineComment    : '//' ~[\r\n]* -> skip;
+Str	           :'"' ~('\r' | '\n' | '"')* '"';
 
-statement	
-:	'{' statement* '}'
-#nestedStatement
-|	'if' LP expression RP ifBlock 'else' elseBlock
-#ifElseStatement
-|	'while' LP expression RP whileBlock
-#whileStatement
-|	'System.out.println' LP  expression RP ';'
-#printStatement
-|	Identifier EQ expression ';'
-#variableAssignmentStatement
-|	Identifier LSB expression RSB EQ expression ';'
-#arrayAssignmentStatement
-;	
+// Rules
 
-ifBlock
-:	statement
-;
+primaryExpr : ID | Constant | StrLiteral+ | '(' expr ')';
 
-elseBlock
-:	statement
-;
+postfixExpr : primaryExpr | postfixExpr '[' expr ']' | postfixExpr '(' argumentExprList? ')' | postfixExpr '.' ID | '(' typeName ')' '{' initializerList '}' | '(' typeName ')' '{' initializerList ',' '}';
 
-whileBlock
-:	statement
-;
+argumentExprList : assignmentExpr | argumentExprList ',' assignmentExpr;
 
-expression
-:   expression LSB expression RSB
-# arrayAccessExpression
+unaryExpr : postfixExpr | unaryOperator castExpr;
 
-|   expression DOTLENGTH
-# arrayLengthExpression
+unaryOperator : '+' | '-' | '!';
 
-|   expression '.' Identifier '(' ( expression ( ',' expression )* )? ')'
-# methodCallExpression
+castExpr : unaryExpr | '(' typeName ')' castExpr;
 
-|   NOT expression
-# notExpression
+multiplicativeExpr : castExpr | multiplicativeExpr '*' castExpr | multiplicativeExpr '/' castExpr | multiplicativeExpr '%' castExpr;
 
-|   'new' 'int' LSB expression RSB
-# arrayInstantiationExpression
+additiveExpr : multiplicativeExpr | additiveExpr '+' multiplicativeExpr | additiveExpr '-' multiplicativeExpr;
 
-|   'new' Identifier '(' ')'
-# objectInstantiationExpression
+relationalExpr : additiveExpr | relationalExpr '<' additiveExpr | relationalExpr '>' additiveExpr | relationalExpr '<=' additiveExpr | relationalExpr '>=' additiveExpr;
 
-|	expression POWER expression
-# powExpression
+equalityExpr : relationalExpr | equalityExpr '==' relationalExpr | equalityExpr '!=' relationalExpr;
 
-|   expression TIMES expression
-# mulExpression
+logicalAndExpr : equalityExpr | logicalAndExpr 'Va' equalityExpr;
 
-|   expression PLUS expression
-# addExpression
+logicalOrExpr : logicalAndExpr | logicalOrExpr 'Ya' logicalAndExpr;
 
-|   expression MINUS expression
-# subExpression
+assignmentExpr : logicalOrExpr | unaryExpr '=' assignmentExpr;
 
-|   expression LT expression
-# ltExpression  
+expr : assignmentExpr | expr ',' assignmentExpr;
 
-|   expression AND expression
-# andExpression
+constantExpr : logicalOrExpr;
 
-|   IntegerLiteral
-# intLitExpression
+declaration : declarationSpecifiers initDeclaratorList ';'|	declarationSpecifiers ';';
 
-|   BooleanLiteral
-# booleanLitExpression
+declarationSpecifiers : declarationSpecifier+;
 
-|   Identifier
-# identifierExpression
+declarationSpecifiers2 : declarationSpecifier+;
 
-|   'this'
-# thisExpression
+declarationSpecifier : typeSpecifier | typeQualifier;
 
-|   '(' expression ')'
-# parenExpression
-;
+initDeclaratorList : initDeclarator | initDeclaratorList ',' initDeclarator;
 
-AND:'&&';
-LT:'<';
-PLUS:'+';
-MINUS:'-';
-TIMES:'*';
-POWER:'**';
-NOT:'!';
-LSB:'[';
-RSB:']';
-DOTLENGTH:'.length';
-LP:'(';
-RP:')';
-RETURN: 'return';
-EQ: '=';
+initDeclarator : declarator | declarator '=' initializer;
 
-BooleanLiteral
-:	'true'
-|	'false'
-;
+typeSpecifier : ('Void' | 'Harf' | 'Adad_Sahih_riz' | 'Adad_Sahih' | 'Adad_Sahih_bozorg' | 'Adad_Ashar_bozorg' | 'Adad_Ashar_riz') | classSpecifier | enumSpecifier;
 
-Identifier
-:	JavaLetter JavaLetterOrDigit*
-;
+classSpecifier : Class_ ID? '{' classDeclarationList '}' | Class_ ID;
 
-fragment
-JavaLetter
-:	[a-zA-Z$_] // these are the 'java letters' below 0xFF
-;
+classDeclarationList : classDeclaration | classDeclarationList classDeclaration;
 
-fragment
-JavaLetterOrDigit
-:	[a-zA-Z0-9$_] // these are the 'java letters or digits' below 0xFF
-;
+classDeclaration : specifierQualifierList classDeclaratorList? ';';
 
-IntegerLiteral
-:	DecimalIntegerLiteral
-;
+specifierQualifierList : typeSpecifier specifierQualifierList?| typeQualifier specifierQualifierList?;
 
-fragment
-DecimalIntegerLiteral
-:	DecimalNumeral IntegertypeSuffix?
-;
+classDeclaratorList : classDeclarator | classDeclaratorList ',' classDeclarator;
 
-fragment
-IntegertypeSuffix
-:	[lL]
-;
+classDeclarator : declarator | declarator? ':' constantExpr;
 
-fragment
-DecimalNumeral
-	:	'0'
-|	NonZeroDigit (Digits? | Underscores Digits)
-	;
+enumSpecifier : 'Shomaresh' ID? '{' enumeratorList '}'| 'Shomaresh' ID? '{' enumeratorList ',' '}'| 'Shomaresh' ID;
 
-	fragment
-	Digits
-	:	Digit (DigitsAndUnderscores? Digit)?
-	;
+enumeratorList : enumerator | enumeratorList ',' enumerator;
 
-	fragment
-	Digit
-	:	'0'
-	|	NonZeroDigit
-	;
+enumerator : enumerationConstant | enumerationConstant '=' constantExpr;
 
-	fragment
-	NonZeroDigit
-	:	[1-9]
-	;
+enumerationConstant : ID;
 
-	fragment
-	DigitsAndUnderscores
-	:	DigitOrUnderscore+
-	;
+typeQualifier : 'Sabet';
 
-	fragment
-	DigitOrUnderscore
-	:	Digit
-	|	'_'
-	;
+declarator : directDeclarator;
 
-	fragment
-	Underscores
-	:	'_'+
-	;
+directDeclarator
+    : ID
+    | '(' declarator ')'
+    | directDeclarator '[' typeQualifier? assignmentExpr? ']'
+    | directDeclarator '[' typeQualifier  assignmentExpr ']'
+    | directDeclarator '[' typeQualifier? '*' ']'
+    | directDeclarator '(' parameterTypeList ')'
+    | directDeclarator '(' identifierList? ')';
 
-	WS
-	:   [ \r\t\n]+ -> skip
-	;   
+nestedParenthesesBlock : ( ~('(' | ')') | '(' nestedParenthesesBlock ')')*;
 
-	MULTILINE_COMMENT
-	:  '/*' .*? '*/' -> skip
-	;
-	LINE_COMMENT
-	:  '//' .*? '\n' -> skip
-;
+parameterTypeList : parameterList;
+
+parameterList : parameterDeclaration | parameterList ',' parameterDeclaration;
+
+parameterDeclaration : declarationSpecifiers declarator| declarationSpecifiers2 abstractDeclarator?;
+
+identifierList : ID | identifierList ',' ID;
+
+typeName : specifierQualifierList abstractDeclarator?;
+
+abstractDeclarator : directAbstractDeclarator;
+
+directAbstractDeclarator
+    : '(' abstractDeclarator ')'
+    | '[' typeQualifier? assignmentExpr? ']'
+    | '[' typeQualifier? assignmentExpr ']'
+    | '[' typeQualifier assignmentExpr ']'
+    | '(' parameterTypeList? ')'
+    | directAbstractDeclarator '[' typeQualifier? assignmentExpr? ']'
+    | directAbstractDeclarator '[' typeQualifier? assignmentExpr ']'
+    | directAbstractDeclarator '[' typeQualifier assignmentExpr']'
+    | directAbstractDeclarator '(' parameterTypeList? ')';
+
+initializer : assignmentExpr | '{' initializerList '}' | '{' initializerList ',' '}';
+
+initializerList : designation? initializer | initializerList ',' designation? initializer;
+
+designation : designatorList '=';
+
+designatorList : designator | designatorList designator;
+
+designator : '[' constantExpr ']' | '.' ID;
+
+statement : labeledStatement | compoundStatement | expressionStatement | selectionStatement | iterationStatement | jumpStatement;
+
+labeledStatement : ID ':' statement | 'Halat' constantExpr ':' statement | 'PishFarz' ':' statement;
+
+compoundStatement : '{' blockItemList? '}';
+
+blockItemList : blockItem | blockItemList blockItem;
+
+blockItem : declaration | statement;
+
+expressionStatement : expr? ';';
+
+selectionStatement : 'Agar' '(' expr ')' statement ('Vagar_Na' statement)? | 'Entekhab' '(' expr ')' statement;
+
+iterationStatement : 'Ta_Vaghti_Ke' '(' expr ')' statement | 'Baraye' '(' expr? ';' expr? ';' expr? ')' statement | 'Baraye' '(' declaration expr? ';' expr? ')' statement;
+
+jumpStatement : 'Edame_Bede' ';' | 'Bepar_biroon' ';' | 'Bargardoon' expr? ';';
+
+program : translationUnit? EOF;
+
+translationUnit : externalDeclaration | translationUnit externalDeclaration;
+
+externalDeclaration : functionDefinition | declaration | ';';
+
+functionDefinition : declarationSpecifiers? declarator declarationList? compoundStatement;
+
+declarationList : declaration | declarationList declaration;
