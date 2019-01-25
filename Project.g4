@@ -1,39 +1,25 @@
 grammar Project;
 
-goal	
-:	mainClass classDeclaration* EOF
-;
+goal	:	mainClass classDeclaration* EOF;
 
 
-mainClass	
-:	'class' Identifier '{' 'public' 'static' 'void' 'main' '(' 'String' '[' ']' Identifier ')' '{' statement '}' '}';
+mainClass	:	'class' Identifier '{' 'public' 'static' 'void' 'main' '(' 'String' '[' ']' Identifier ')' '{' statement '}' '}';
 
-classDeclaration	
-:	'class' Identifier ( 'extends' Identifier )? '{' fieldDeclaration* methodDeclaration* '}';
+classDeclaration	:	'class' Identifier ( 'extends' Identifier )? '{' fieldDeclaration* methodDeclaration* '}';
 
-fieldDeclaration
-:	varDeclaration ;
+fieldDeclaration :	varDeclaration ;
 
-localDeclaration
-:	varDeclaration ;
+localDeclaration :	varDeclaration ;
 
-varDeclaration	
-:	kind Identifier ';';
+varDeclaration	:	kind Identifier ';';
 
-methodDeclaration	
-:	'public' kind Identifier '(' parameterList? ')' '{' methodBody '}';
+methodDeclaration	:	'public' kind Identifier '(' parameterList? ')' '{' methodBody '}';
 
-parameterList
-:   parameter (',' parameter)*
-;
+parameterList :   parameter (',' parameter)*;
 
-parameter
-:   kind Identifier
-;
+parameter :   kind Identifier;
 
-methodBody
-:	localDeclaration* statement* RETURN expression ';'
-;
+methodBody :	localDeclaration* statement* RETURN expression ';';
 
 kind	
 :	'int' '[' ']'
@@ -42,8 +28,7 @@ kind
 |	Identifier
 ;	
 
-statement	
-:	'{' statement* '}'
+statement	:	'{' statement* '}'
 #nestedStatement
 |	'if' LP expression RP ifBlock 'else' elseBlock
 #ifElseStatement
@@ -57,17 +42,11 @@ statement
 #arrayAssignmentStatement
 ;	
 
-ifBlock
-:	statement
-;
+ifBlock  :	statement;
 
-elseBlock
-:	statement
-;
+elseBlock :	statement;
 
-whileBlock
-:	statement
-;
+whileBlock : statement;
 
 expression
 :   expression LSB expression RSB
@@ -142,9 +121,7 @@ BooleanLiteral
 |	'false'
 ;
 
-Identifier
-:	JavaLetter JavaLetterOrDigit*
-;
+Identifier :	JavaLetter JavaLetterOrDigit*;
 
 fragment
 JavaLetter
@@ -176,51 +153,45 @@ DecimalNumeral
 |	NonZeroDigit (Digits? | Underscores Digits)
 	;
 
-	fragment
-	Digits
-	:	Digit (DigitsAndUnderscores? Digit)?
-	;
+fragment
+Digits
+:	Digit (DigitsAndUnderscores? Digit)?
+;
 
-	fragment
-	Digit
-	:	'0'
-	|	NonZeroDigit
-	;
+fragment
+Digit
+:	'0'
+|	NonZeroDigit
+;
 
-	fragment
-	NonZeroDigit
-	:	[1-9]
-	;
+fragment
+NonZeroDigit
+:	[1-9]
+;
 
-	fragment
-	DigitsAndUnderscores
-	:	DigitOrUnderscore+
-	;
+fragment
+DigitsAndUnderscores
+:	DigitOrUnderscore+
+;
 
-	fragment
-	DigitOrUnderscore
-	:	Digit
-	|	'_'
-	;
+fragment
+DigitOrUnderscore
+:	Digit
+|	'_'
+;
 
-	fragment
-	Underscores
-	:	'_'+
-	;
+fragment
+Underscores
+:	'_'+
+;
 
-	WS
-	:   [ \r\t\n]+ -> skip
-	;   
+WS
+:   [ \r\t\n]+ -> skip
+;   
 
-
-
-
-
-    
-
-	MULTILINE_COMMENT
-	:  '/*' .*? '*/' -> skip
-	;
-	LINE_COMMENT
-	:  '//' .*? '\n' -> skip
-	;
+MULTILINE_COMMENT
+:  '/*' .*? '*/' -> skip
+;
+LINE_COMMENT
+:  '//' .*? '\n' -> skip
+;
